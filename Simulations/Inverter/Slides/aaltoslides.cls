@@ -1,0 +1,1 @@
+../../Slidetemplate/aaltoslides.cls

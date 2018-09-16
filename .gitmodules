@@ -1,0 +1,16 @@
+[submodule "Entities/thesdk"]
+	path = Entities/thesdk
+    url = git@github.com:TheSystemDevelopmentKit/thesdk.git
+[submodule "Entities/vhdl"]
+	path = Entities/vhdl
+    url = git@github.com:TheSystemDevelopmentKit/vhdl.git
+[submodule "Entities/verilog"]
+	path = Entities/verilog
+    url = git@github.com:TheSystemDevelopmentKit/verilog.git
+[submodule "Simulations/Simtemplate"]
+	path = Simulations/Simtemplate
+    url = git@github.com:TheSystemDevelopmentKit/simtemplate.git
+[submodule "Simulations/Slidetemplate"]
+	path = Simulations/Slidetemplate
+    url = git@github.com:TheSystemDevelopmentKit/slidetemplate.git
+
