@@ -2,7 +2,7 @@
 #Selective initialization of submodules
 #Last modification by Marko Kosunen, marko.kosunen@aalto.fi, 17.08.2018 13:53
 SUBMODULES="./Entities/verilog ./Entities/vhdl ./Entities/thesdk \
-    ./Simulations/Slidetemplate ./Simulations/Simtemplate"
+    ./Entities/rtl ./Simulations/Slidetemplate ./Simulations/Simtemplate"
 
 for mod in $SUBMODULES; do 
     git submodule update --init $mod

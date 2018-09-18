@@ -14,3 +14,6 @@
 	path = Simulations/Slidetemplate
     url = git@github.com:TheSystemDevelopmentKit/slidetemplate.git
 
+[submodule "Entities/rtl"]
+	path = Entities/rtl
+	url = git@github.com:TheSystemDevelopmentKit/rtl.git
