@@ -25,7 +25,7 @@ class inv_sim:
             self.inv.append(inverter(self))
         for k in range(1,len(self.models)+1):
             if k==1:
-                self.inv[k-1].iptr_A.Value=self.b;
+                self.inv[k-1].iptr_A.Data=self.b;
             else:
                 self.inv[k-1].iptr_A=self.inv[k-2]._Z;
             self.inv[k-1].model=self.models[k-1];
@@ -41,7 +41,7 @@ class inv_sim:
             h=plt.subplot();
             hfont = {'fontname':'Sans'}
             x = np.linspace(0,10,11).reshape(-1,1)
-            markerline, stemlines, baseline = plt.stem(x, self.inv[k-1]._Z.Value[0:11,0], '-.')
+            markerline, stemlines, baseline = plt.stem(x, self.inv[k-1]._Z.Data[0:11,0], '-.')
             plt.setp(markerline,'markerfacecolor', 'b','linewidth',2)
             plt.setp(stemlines, 'linestyle','solid','color','b', 'linewidth', 2)
             #plt.ylim((np.amin([self.a,self.b]), np.amax([self.a,self.b])));
