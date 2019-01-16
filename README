@@ -23,8 +23,8 @@ Variables in TheSDK.config
 
 
 -Configure latex, matlab and MentorGraphics vsim tools to your path, 
-modify pathsetup.scr if needed and source it
-~>source pathsetup.scr
+modify sourceme.csh if needed and source it
+~>source sourceme.csh
 
 -If you are using python, you may need to intall some modules locally.
 run ./pip3.6userinstall or modify it to be compliant with your current python
