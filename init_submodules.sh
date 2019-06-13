@@ -5,8 +5,8 @@ SUBMODULES="\
     ./Entities/verilog \
     ./Entities/vhdl \
     ./Entities/thesdk \
-    ./Entities/rtl \
     ./Entities/thesdk_helpers \
+    ./Entities/inverter \
     ./Simulations/Slidetemplate \
     ./Simulations/Simtemplate"
 
