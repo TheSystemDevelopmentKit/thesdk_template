@@ -9,7 +9,11 @@ from inverter import *
 # This actually does very little. it is included to show how to use controllers
 from  inverter.controller import controller as inverter_controller
 
-class inv_sim:
+class inv_sim(thesdk):
+    @property
+    def _classfile(self):
+        return os.path.dirname(os.path.realpath(__file__)) + "/"+__name__
+
     def __init__(self):
         self.Rs=100.0e6
         self.picpath=[];
@@ -37,6 +41,9 @@ class inv_sim:
             for inst in self.invs:
                 inst.init();
                 inst.run();
+            self.print_log(type='I', msg="""
+            Never mind the latency. Inverter should be asynchronous, 
+            but verilog simulation is not. File IO is synchronized to sampling clock""")
 
     def plot(self):
         for k in range(1,len(self.models)+1):
