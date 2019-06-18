@@ -21,6 +21,6 @@ for mod in $SUBMODULES; do
     cd ${DIR}
 
 done
-exit
+exit 0
 
 
