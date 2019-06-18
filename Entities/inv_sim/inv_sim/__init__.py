@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 
 from thesdk import *
 from inverter import *
+# This actually does very little. it is included to show how to use controllers
+from  inverter.controller import controller as inverter_controller
 
 class inv_sim:
-
     def __init__(self):
         self.Rs=100.0e6
         self.picpath=[];
@@ -20,18 +21,20 @@ class inv_sim:
 
     def define_simple(self):
         #There can be several configurations
-        self.inv=[]
+        self.controller=inverter_controller(self)
+        self.invs=[]
         for k in range(1,len(self.models)+1):
-            self.inv.append(inverter(self))
-        for k in range(1,len(self.models)+1):
+            self.invs.append(inverter(self))
             if k==1:
-                self.inv[k-1].iptr_A.Data=self.b;
+                self.invs[k-1].IOS.Members['A'].Data=self.b
             else:
-                self.inv[k-1].iptr_A=self.inv[k-2]._Z;
-            self.inv[k-1].model=self.models[k-1];
+                self.invs[k-1].IOS.Members['A']=self.invs[k-2].IOS.Members['Z']
+            self.invs[k-1].model=self.models[k-1];
+            self.invs[k-1].IOS.Members['control_write']=self.controller.IOS.Members['control_write']
 
     def run_simple(self):
-            for inst in self.inv:
+            self.controller.start_datafeed()
+            for inst in self.invs:
                 inst.init();
                 inst.run();
 
@@ -41,7 +44,7 @@ class inv_sim:
             h=plt.subplot();
             hfont = {'fontname':'Sans'}
             x = np.linspace(0,10,11).reshape(-1,1)
-            markerline, stemlines, baseline = plt.stem(x, self.inv[k-1]._Z.Data[0:11,0], '-.')
+            markerline, stemlines, baseline = plt.stem(x, self.invs[k-1].IOS.Members['Z'].Data[0:11,0], '-.')
             plt.setp(markerline,'markerfacecolor', 'b','linewidth',2)
             plt.setp(stemlines, 'linestyle','solid','color','b', 'linewidth', 2)
             #plt.ylim((np.amin([self.a,self.b]), np.amax([self.a,self.b])));
@@ -50,7 +53,7 @@ class inv_sim:
             #plt.xlim((np.amin(self.x), np.amax(self.x)));
             #plt.plot(self.x,self.a,label='Blowing in the wind',linewidth=2);
             #plt.plot(self.x,self.b,label='Blowing in the wind',linewidth=2);
-            tstr = "Inverter model %s" %(self.inv[k-1].model) 
+            tstr = "Inverter model %s" %(self.invs[k-1].model) 
             plt.suptitle(tstr,fontsize=20);
             plt.ylabel('Out', **hfont,fontsize=18);
             plt.xlabel('Sample (n)', **hfont,fontsize=18);
@@ -63,16 +66,17 @@ class inv_sim:
             printstr="%s/inv_sim_Rs_%i_%i.eps" %(self.picpath, self.Rs, k)
             #plt.show()
             plt.show(block=False);
-            #input();
             figure.savefig(printstr, format='eps', dpi=300);
+            #input();
 
 if __name__=="__main__":
     from thesdk import *
     from inv_sim import *
     t=inv_sim()
-    t.models=[ 'py', 'vhdl', 'sv' ]
+    t.models=[ 'py', 'sv', 'sv' ]
     t.define_simple()
     t.picpath="./"
     t.run_simple()
     t.plot()
+
 
