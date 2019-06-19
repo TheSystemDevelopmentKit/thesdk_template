@@ -4,7 +4,6 @@
 DIR=$( cd `dirname $0` && pwd )
 SUBMODULES="\
     ./Entities/verilog \
-    ./Entities/vhdl \
     ./Entities/thesdk \
     ./Entities/thesdk_helpers \
     ./Entities/inverter \

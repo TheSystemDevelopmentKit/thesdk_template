@@ -1,9 +1,6 @@
 [submodule "Entities/thesdk"]
 	path = Entities/thesdk
     url = git@github.com:TheSystemDevelopmentKit/thesdk.git
-[submodule "Entities/vhdl"]
-	path = Entities/vhdl
-    url = git@github.com:TheSystemDevelopmentKit/vhdl.git
 [submodule "Entities/verilog"]
 	path = Entities/verilog
     url = git@github.com:TheSystemDevelopmentKit/verilog.git
