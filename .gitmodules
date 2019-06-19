@@ -1,9 +1,6 @@
 [submodule "Entities/thesdk"]
 	path = Entities/thesdk
     url = git@github.com:TheSystemDevelopmentKit/thesdk.git
-[submodule "Entities/vhdl"]
-	path = Entities/vhdl
-    url = git@github.com:TheSystemDevelopmentKit/vhdl.git
 [submodule "Entities/verilog"]
 	path = Entities/verilog
     url = git@github.com:TheSystemDevelopmentKit/verilog.git
@@ -14,9 +11,15 @@
 	path = Simulations/Slidetemplate
     url = git@github.com:TheSystemDevelopmentKit/slidetemplate.git
 
-[submodule "Entities/rtl"]
-	path = Entities/rtl
-	url = git@github.com:TheSystemDevelopmentKit/rtl.git
 [submodule "Entities/thesdk_helpers"]
 	path = Entities/thesdk_helpers
 	url = git@github.com:TheSystemDevelopmentKit/thesdk_helpers.git
+[submodule "Entities/inverter"]
+	path = Entities/inverter
+	url = git@github.com:TheSystemDevelopmentKit/inverter.git
+[submodule "Entities/inv_sim"]
+	path = Entities/inv_sim
+	url = git@github.com:TheSystemDevelopmentKit/inv_sim.git
+[submodule "Simulations/Inverter"]
+	path = Simulations/Inverter
+	url = git@github.com:TheSystemDevelopmentKit/Inverter_simulation.git
