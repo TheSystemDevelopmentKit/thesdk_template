@@ -9,7 +9,8 @@ SUBMODULES="\
     ./Entities/inverter \
     ./Entities/inv_sim \
     ./Simulations/Slidetemplate \
-    ./Simulations/Simtemplate"
+    ./Simulations/Simtemplate \
+    ./Simulations/Inverter"
 
 git submodule sync
 for mod in $SUBMODULES; do 

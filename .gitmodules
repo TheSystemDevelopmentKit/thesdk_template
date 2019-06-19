@@ -20,3 +20,6 @@
 [submodule "Entities/inv_sim"]
 	path = Entities/inv_sim
 	url = git@github.com:TheSystemDevelopmentKit/inv_sim.git
+[submodule "Simulations/Inverter"]
+	path = Simulations/Inverter
+	url = git@github.com:TheSystemDevelopmentKit/Inverter_simulation.git
