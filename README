@@ -3,7 +3,8 @@ Initiated by Marko Kosunen, marko.kosunen@aalto.fi 7.8.2017
 Last modification by Marko Kosunen, marko.kosunen@aalto.fi, 17.08.2018 15:17
 
 OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL
-if you're using some other shell, change to tcsh
+if you're using some other shell, change to tcsh or modify the scripts to be 
+compliant with your shell.
 ~>tcsh
 
 CONFIGURATION Quickstart
@@ -26,10 +27,10 @@ Variables in TheSDK.config
 modify sourceme.csh if needed and source it
 ~>source sourceme.csh
 
--If you are using python, you may need to intall some modules locally.
-run ./pip3.6userinstall or modify it to be compliant with your current python
+-If you are using python, you may need to install some modules locally.
+run ./pip3.6userinstall.sh or modify it to be compliant with your current python
 version.
-~>./pip3userinstall
+~>./pip3userinstall.sh
 
 
 -To test your environment
