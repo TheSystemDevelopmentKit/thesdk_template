@@ -6,7 +6,7 @@ pip3.6 install --user matplotlib
 pip3.6 install --user joblib
 pip3.6 install --user scipy
 pip3.6 install --user pandas
+pip3.6 install --user sphinx
 
 exit 0
-
 
