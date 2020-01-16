@@ -1,9 +1,6 @@
 [submodule "Entities/thesdk"]
 	path = Entities/thesdk
     url = git@github.com:TheSystemDevelopmentKit/thesdk.git
-[submodule "Entities/verilog"]
-	path = Entities/verilog
-    url = git@github.com:TheSystemDevelopmentKit/verilog.git
 [submodule "Simulations/Simtemplate"]
 	path = Simulations/Simtemplate
     url = git@github.com:TheSystemDevelopmentKit/simtemplate.git
@@ -26,3 +23,6 @@
 [submodule "Entities/eldo"]
 	path = Entities/eldo
 	url = https://github.com/TheSystemDevelopmentKit/eldo.git
+[submodule "Entities/rtl"]
+	path = Entities/rtl
+	url = git@github.com:TheSystemDevelopmentKit/rtl.git
