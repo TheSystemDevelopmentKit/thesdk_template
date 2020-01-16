@@ -23,3 +23,6 @@
 [submodule "Simulations/Inverter"]
 	path = Simulations/Inverter
 	url = git@github.com:TheSystemDevelopmentKit/Inverter_simulation.git
+[submodule "Entities/eldo"]
+	path = Entities/eldo
+	url = https://github.com/TheSystemDevelopmentKit/eldo.git
