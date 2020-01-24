@@ -2,3 +2,5 @@ TheSDK.config
 __pycache__
 *.eps
 *.pdf
+*~
+*.swp
