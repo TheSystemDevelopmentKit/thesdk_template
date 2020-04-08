@@ -26,3 +26,6 @@
 [submodule "Entities/rtl"]
 	path = Entities/rtl
 	url = git@github.com:TheSystemDevelopmentKit/rtl.git
+[submodule "Entities/myentity"]
+	path = Entities/myentity
+	url = git@github.com:TheSystemDevelopmentKit/tutorial_entity.git
