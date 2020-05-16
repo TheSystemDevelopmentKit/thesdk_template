@@ -7,6 +7,7 @@ pip3.6 install --user joblib
 pip3.6 install --user scipy
 pip3.6 install --user pandas
 pip3.6 install --user sphinx
+pip3.6 install --user sphinx_rtd_theme
 
 exit 0
 
