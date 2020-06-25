@@ -20,12 +20,12 @@
 [submodule "Simulations/Inverter"]
 	path = Simulations/Inverter
 	url = git@github.com:TheSystemDevelopmentKit/Inverter_simulation.git
-[submodule "Entities/eldo"]
-	path = Entities/eldo
-	url = https://github.com/TheSystemDevelopmentKit/eldo.git
 [submodule "Entities/rtl"]
 	path = Entities/rtl
 	url = git@github.com:TheSystemDevelopmentKit/rtl.git
 [submodule "Entities/myentity"]
 	path = Entities/myentity
 	url = git@github.com:TheSystemDevelopmentKit/tutorial_entity.git
+[submodule "Entities/spice"]
+	path = Entities/spice
+	url = git@github.com:TheSystemDevelopmentKit/spice.git
