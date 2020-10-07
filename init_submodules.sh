@@ -4,7 +4,7 @@
 DIR=$( cd `dirname $0` && pwd )
 SUBMODULES="\
     ./Entities/rtl \
-    ./Entities/eldo \
+    ./Entities/spice \
     ./Entities/thesdk \
     ./Entities/thesdk_helpers \
     ./Entities/inverter \
