@@ -12,6 +12,13 @@ else
     setenv PYTHONPATH ${PYTHONPATH}:$scriptdir/Entities/thesdk
 endif
 
+if ( -d ${HOME}/.local/bin && "${PATH}" !~ *"${HOME}/.local/bin"* ) then
+    echo "Adding \${HOME}/.local/bin to path for user specific python installations"
+    setenv PATH ${HOME}/.local/bin:${PATH}
+else
+    echo "${HOME}/.local/bin already in path"
+endif
+
 unset called
 unset scriptfp
 unset scriptdir
