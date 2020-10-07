@@ -19,7 +19,7 @@ for mod in $SUBMODULES; do
     git submodule update --init $mod
     cd ${mod}
     if [ -f ./init_submodules.sh ]; then
-        ./init_submodules
+        ./init_submodules.sh
     fi
     cd ${DIR}
 
