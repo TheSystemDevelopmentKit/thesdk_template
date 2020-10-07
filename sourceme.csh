@@ -1,6 +1,8 @@
-#set paths for matlab
+# Set paths for Mentor programs (Eldo)
 use advms_17.1
-#     
+# Set paths for Cadence programs (Spectre)
+use icadv123
+     
 #Set module thesdk to PYTHONPATH
 set called=($_)
 set scriptfp=`readlink -f $called[2]`
