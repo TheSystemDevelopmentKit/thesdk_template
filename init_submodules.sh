@@ -3,10 +3,10 @@
 #Written by by Marko Kosunen, marko.kosunen@aalto.fi, 2017
 DIR=$( cd `dirname $0` && pwd )
 SUBMODULES="\
+    ./thesdk_helpers \
     ./Entities/rtl \
     ./Entities/spice \
     ./Entities/thesdk \
-    ./Entities/thesdk_helpers \
     ./Entities/inverter \
     ./Entities/inv_sim \
     ./Entities/myentity \
