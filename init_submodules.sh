@@ -3,7 +3,6 @@
 #Written by by Marko Kosunen, marko.kosunen@aalto.fi, 2017
 DIR=$( cd `dirname $0` && pwd )
 SUBMODULES="\
-    ./thesdk_helpers \
     ./Entities/rtl \
     ./Entities/spice \
     ./Entities/thesdk \
@@ -12,7 +11,9 @@ SUBMODULES="\
     ./Entities/myentity \
     ./Simulations/Slidetemplate \
     ./Simulations/Simtemplate \
-    ./Simulations/Inverter"
+    ./Simulations/Inverter
+    ./thesdk_helpers \
+"
 
 git submodule sync
 for mod in $SUBMODULES; do 

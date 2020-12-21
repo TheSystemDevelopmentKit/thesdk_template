@@ -7,7 +7,6 @@
 [submodule "Simulations/Slidetemplate"]
 	path = Simulations/Slidetemplate
     url = git@github.com:TheSystemDevelopmentKit/slidetemplate.git
-
 [submodule "thesdk_helpers"]
 	path = thesdk_helpers
 	url = git@github.com:TheSystemDevelopmentKit/thesdk_helpers.git
