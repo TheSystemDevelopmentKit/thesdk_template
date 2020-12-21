@@ -9,9 +9,6 @@ SUBMODULES="\
     ./Entities/inverter \
     ./Entities/inv_sim \
     ./Entities/myentity \
-    ./Simulations/Slidetemplate \
-    ./Simulations/Simtemplate \
-    ./Simulations/Inverter
     ./thesdk_helpers \
 "
 
