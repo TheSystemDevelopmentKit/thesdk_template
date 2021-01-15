@@ -1,10 +1,10 @@
 # TheSydeKick-System Development Kit
 Initiated by Marko Kosunen, marko.kosunen@aalto.fi 7.8.2017
 
-OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL
+*OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL*
 if you're using some other shell, change to tcsh or modify the scripts to be 
 compliant with your shell.
-~>tcsh
+> tcsh
 
 ## CONFIGURATION Quickstart
 Go to TheSDK directory and run 
@@ -22,7 +22,7 @@ environment or not. Modify commands accordingly.
 
 - Configure latex, and simulators ( vsim, eldo, spectre etc.) tools to your path, 
 modify sourceme.csh if needed and source it
-~>source sourceme.csh
+> source sourceme.csh
 
 -If you are using python, you may need to install some modules locally.
 run ./pip3userinstall.sh or modify it to be compliant with your current python
@@ -47,8 +47,6 @@ to
 and run 
 > ./configure && make clean && make all
 
-
------
 * TO CREATE AND TEST NEW ENTITY
 
 Create a new entity with:
@@ -62,9 +60,9 @@ See
 > ../thesdk_helpers/initentity -h for help
 The new entity is created as a git project. Push it to your favourite repository
 
-* HOW TO USE TheSDK
+## HOW TO USE TheSyDeKick
 
-TheSDK is a multi-tool simulation and developement environment for developing systems. 
+TheSyDeKick is a multi-tool simulation and developement environment for developing systems. 
 It targets to using a single control environment to simulate,design and measure the 
 system components with various tools by using a single "Control environment" for
 control, analysis, and visualization of the results.
@@ -106,29 +104,34 @@ Entities
                 work
 
 Guidelines to follow
---All simulations configured, performed and results processed under Simulations directory
---All component descriptions, called Entities, regardless of the used tool/language are 
+- All simulations configured, performed and results processed under Simulations directory
+- All component descriptions, called Entities, regardless of the used tool/language are 
   located under Entities directory.
 
 
-CLASS ORGANIZATION
+## CLASS ORGANIZATION
 The Entities and simulation setups are implemented as classes that  
 cross-reference to each other without restrictions. 
 
-EXAMPLE of class dependencies and relations
+*EXAMPLE of class dependencies and relations
         
            
-system_abstract_class(thesdk,spectre,rtl)
-          \                 /      /
-           \               /      /
-               "system_sim       /
-                    |           /
-                 "system"      /
-                /     \       /
-       "entity1"  "entity2"
-          |
-      "entity3"
+> system_abstract_class(thesdk,spectre,rtl)
+>           \                 /      /
+>            \               /      /
+>                "system_sim       /
+>                     |           /
+>                  "system"      /
+>                 /     \       /
+>        "entity1"  "entity2"
+>           |
+>       "entity3"
 
+
+- Classes are documented with docstrings. To read the dogumentation, e.g:
+> cd Entities/rtl
+> ./configure && make doc
+> firefox ./doc/build/html/index.html
 
 - thesdk is a class to collect methods common to "TheSyDeKick"-framework.
 It should NOT contain anything specific to
@@ -140,7 +143,8 @@ run verilog and vhdl simulations.
 - spice class defines properties and methods that are required to 
 run eldo and spectre simulations.
 
-If component does not have rtl as a superclass, rtl-requirements do not 
+
+- If component does not have rtl as a superclass, rtl-requirements do not 
 apply. Consequently, if component has an  rtl model, it MUST  be a a subclass of rtl. 
 
 - "system_abstract_class" may used as super class for the "system_sim" and
@@ -157,21 +161,21 @@ See: Entities/inv_sim/inv_sim/__init__py
     selected properties from immediate "parent". The properties that are to be copied are determined 
     by property "proplist".
 
-* COMPONENT HIERARCHY GUIDELINE
-- Take  a look at 
-    Entities/inv_verter/inv_verter/__init__.py
-    and
-    Entities/inv_sim/inv_sim/__init__.py
+## COMPONENT HIERARCHY GUIDELINE
+Take  a look at 
+> Entities/inv_verter/inv_verter/__init__.py
+and
+> Entities/inv_sim/inv_sim/__init__.py
 
-    - System is described in "system"  class that determines the 
-        sub-components and the interconnections in between them, and methods to 
-        "run" the "system", i.e. how the signals propagate and in which order 
-        the methods of components are executed.
+- System is described in "system"  class that determines the 
+sub-components and the interconnections in between them, and methods to 
+"run" the "system", i.e. how the signals propagate and in which order 
+the methods of components are executed.
 
-    - If the system is simple, "sim" class may also construct the system. 
-      (see Entities/inv_sim/inv_sim/inv_sim.)
+- If the system is simple, "sim" class may also construct the system. 
+(see Entities/inv_sim/inv_sim/inv_sim.)
 
-* Guidelines to be followed:
+### Guidelines to be followed:
 
 - Components are not subclasses to sim or system class as they should be
     independent of each other and transferrable between systems. 
@@ -179,7 +183,9 @@ See: Entities/inv_sim/inv_sim/__init__py
 - sim class is (usually) not a superclass to system class, as the "system" definitions 
     are independent of how it is simulated.
 
-WHAT NEXT?:
+## WHAT NEXT?:
 Take yout time to get acquainted with Entities/inverter and Entities/inv_sim
-together with Entities/thesdk and Entities/verilog that should give you a picture how the things work.
+together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should 
+give you a picture how the things work.
 
+See also: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial
