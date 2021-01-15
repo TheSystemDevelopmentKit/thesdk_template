@@ -6,38 +6,36 @@ if you're using some other shell, change to tcsh or modify the scripts to be
 compliant with your shell.
 > tcsh
 
+TheSyDeKick release 1.5 has been tested with Python v3.6
+
 ## CONFIGURATION Quickstart
+
 Go to TheSDK directory and run 
-> ./init_submodules
+> ./init_submodules.sh
+> ./pip3userinstall.sh
 > ./configure
 
 - Edit the TheSDK.config file so that the commands for python 
-invocations are correct. 
-Variables in TheSDK.config
+invocations are correct. By default LSF submissions are enabled in TheSDK.config. If you do not have LSF, please disable it from TheSDK.config
 
 The variables defines the commands used in Makefiles for simulation
 submission main thing to decide here is if you have LSF compliant cluster
 environment or not. Modify commands accordingly.
 
+- The simplest possible simulation is defined in Entities/myentity/myentity/__init__.py
+To test your Python installation and configuration:
+> cd Entities/myentity
+> ./configure && make all
 
-- Configure latex, and simulators ( vsim, eldo, spectre etc.) tools to your path, 
+You should see a input and output waveforms of a buffer model.
+
+- Configure circuit simulators ( vsim, eldo, spectre etc.) tools to your path, 
 modify sourceme.csh if needed and source it
 > source sourceme.csh
-
--If you are using python, you may need to install some modules locally.
-run ./pip3userinstall.sh or modify it to be compliant with your current python
-version.
-> ./pip3userinstall.sh
-
 
 - To test your environment:
 > cd Entities/inverter 
 > ./configure && make clean && make all
-(Dependency tracking for Python currently not functional)
-
-By default LSF submissions are enabled in TheSDK.config. If you do not have LSF, please disable it from TheSDK.config and
-> ./configure && make clean && make all
-again
 
 If you wish to test the Python functionality only, edit Entities/inverter/inverter/__init__.py
 and Change the line
@@ -68,8 +66,7 @@ system components with various tools by using a single "Control environment" for
 control, analysis, and visualization of the results.
 
 Implementation the "Control environment" is written in Object-oriented
-Python. Python selected based on
-its good support for computing and signal processing, and support for
+Python. Python selected based on its good support for computing and signal processing, and support for
 interfaces to measurement equipment.. 
 
 NAMING AND STRUCTURE
@@ -104,9 +101,12 @@ Entities
                 work
 
 Guidelines to follow
-- All simulations configured, performed and results processed under Simulations directory
 - All component descriptions, called Entities, regardless of the used tool/language are 
   located under Entities directory.
+- Git submodules are initiated with script init_submodules.sh. This is to give controlled method to select what submodules to init.
+- Things are configured with script named configure, that generates the Makefile.
+- Things are executed with make <recipe>
+- 'configure && make' structure is used because by always following that we never need to document how to do configurations and executions. 
 
 
 ## CLASS ORGANIZATION
