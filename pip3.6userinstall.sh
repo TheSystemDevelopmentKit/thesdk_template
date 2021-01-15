@@ -1,1 +1,0 @@
-thesdk_helpers/shell/pip3.6userinstall.sh
