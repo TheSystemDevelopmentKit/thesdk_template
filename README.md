@@ -127,9 +127,15 @@ Test the new entity:
 See  `../thesdk_helpers/initentity -h` for help
 The new entity is created as a git project. Push it to your favourite repository
 
+### WHAT NEXT?
+Take yout time to get acquainted with `Entities/inverter` and `Entities/inv_sim`  
+together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should  
+give you a picture how the things work. Create a new entity, and start playing a round with it.  
 
-## CLASS ORGANIZATION
-This is not a strict ruleset, rather a guideline how to ease your modeling tasks.
+See also: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial
+
+## Class organization guideline
+This is not a strict ruleset, rather a guideline how to alleviate your modeling tasks and support modularity.
 
 The Entities and simulation setups are implemented as classes that  
 cross-reference to each other without restrictions. (Hardware) modules are instantiated as object of that class.
@@ -189,9 +195,3 @@ independent of each other and transferrable between systems.
 - System_sim class is should not be a superclass to system class, as the "system" definitions 
 are independent of how it is simulated.
 
-## WHAT NEXT?
-Take yout time to get acquainted with `Entities/inverter` and `Entities/inv_sim`  
-together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should  
-give you a picture how the things work. Create a new entity, and start playing a round with it.  
-
-See also: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial
