@@ -102,21 +102,38 @@ Entities
 
 Guidelines to follow
 - All component descriptions, called Entities, regardless of the used tool/language are 
-  located under Entities directory.
-- Git submodules are initiated with script init_submodules.sh. This is to give controlled method to select what submodules to init.
+located under Entities directory.
+- Git submodules are initiated with script init_submodules.sh. This is to give controlled  
+method to select what submodules to init.
 - Things are configured with script named configure, that generates the Makefile.
 - Things are executed with make <recipe>
-- 'configure && make' structure is used because by always following that we never need to document how to do configurations and executions. 
+- 'configure && make' structure is used because by always following that we never need 
+to document how to do configurations and executions. 
+
+The main feature of TheSyDeKick is how to connect these objects together. 
+- IO's are pointers to a Data field of an IO class instance.
+- Drivers write to that data field.
+- Input read from that data field.
+
+Following this guideline your entities retain compatibility with othe TheSyDeKick entities.
+See Entities/inv_sim/inv_sim/__init__.py for reference.
+
+- Entities are documented with docstrings. To read the documentation, e.g:
+> cd Entities/rtl
+> ./configure && make doc
+> firefox ./doc/build/html/index.html
 
 
 ## CLASS ORGANIZATION
-The Entities and simulation setups are implemented as classes that  
-cross-reference to each other without restrictions. 
+This is not a strict ruleset, rather a guideline how to ease your modeling tasks.
 
-*EXAMPLE of class dependencies and relations
-        
+The Entities and simulation setups are implemented as classes that  
+cross-reference to each other without restrictions. (Hardware) modules are instantiated as object of that class.
+
+
+* EXAMPLE of class hierarchy 
            
-> system_abstract_class(thesdk,spectre,rtl)
+> system_parameter_class(thesdk,spectre,rtl)
 >           \                 /      /
 >            \               /      /
 >                "system_sim       /
@@ -128,59 +145,47 @@ cross-reference to each other without restrictions.
 >       "entity3"
 
 
-- Classes are documented with docstrings. To read the dogumentation, e.g:
-> cd Entities/rtl
-> ./configure && make doc
-> firefox ./doc/build/html/index.html
-
-- thesdk is a class to collect methods common to "TheSyDeKick"-framework.
-It should NOT contain anything specific to
-a particular system. 
-It should be superclass to all classes in TheSDK, 
-- rtl class defines properties and methods that are required to 
+- TheSyDeKick classes are intended to collect methods common to "TheSyDeKick"-framework.
+They should NOT contain anything specific to a particular design. 
+- Rtl class defines properties and methods that are required to 
 run verilog and vhdl simulations.
-
-- spice class defines properties and methods that are required to 
+- Spice class defines properties and methods that are required to 
 run eldo and spectre simulations.
+- If component has an  rtl model, it should  be a a subclass of rtl. If component does not have rtl as a superclass, rtl-requirements do not apply. 
 
-
-- If component does not have rtl as a superclass, rtl-requirements do not 
-apply. Consequently, if component has an  rtl model, it MUST  be a a subclass of rtl. 
-
-- "system_abstract_class" may used as super class for the "system_sim" and
-    "system" to define the properties that typically 
-        1. Are common to whole systems. 
+-Design specific classes are freely defined by the designer
+    - The "system_parameter_class" may used as super class for the "system_sim" and
+    "system" (not subcomponent entities) to define the properties that typically 
+        1. Are common to whole system design. 
         2. Need not to be altered between simulations, but are most often
         propagated through property inheritance.
 
-- Typically a simulation is controlled by "system_sim" class that controls 
-the simulation providing methods like  "run" and  "plot".
-See: Entities/inv_sim/inv_sim/__init__py 
+     - Typically a simulation is controlled by "system_sim" class that controls 
+       the simulation providing methods like  "run" and  "plot". This class usually contains a
+       "design under test", which is a instance of "system" class, and methods requiered to run the simulations.
+       (See: Entities/inv_sim/inv_sim/__init__py . As the test case for inv_sim is extremely simple, the DUT
+       is constructed inside it with 'define_simple method'. for more complex systems this is not preferred way.
+       This method should be in 'system' class.)
+       
+     - System is described in "system"  class that determines the 
+       sub-components and the interconnections in between them, and methods to 
+       "run" the "system", i.e. how the signals propagate and in which order 
+       the methods of components are executed. 
+       Take  a look at 
+       > Entities/inv_verter/inv_verter/__init__.py
+       and
+       > Entities/inv_sim/inv_sim/__init__.py
 
-- Component properties are controlled and propagated by class constructor by copying the
+- Class attributes are controlled and propagated by class constructor by copying the
     selected properties from immediate "parent". The properties that are to be copied are determined 
-    by property "proplist".
+    by "proplist" attribute. By doing this isntead of using inherited classes, we keep entities independent of
+    their use environment i.e. they can be used freely in other desings. Still we can automate the propagation 
+    of the parameters.
 
-## COMPONENT HIERARCHY GUIDELINE
-Take  a look at 
-> Entities/inv_verter/inv_verter/__init__.py
-and
-> Entities/inv_sim/inv_sim/__init__.py
-
-- System is described in "system"  class that determines the 
-sub-components and the interconnections in between them, and methods to 
-"run" the "system", i.e. how the signals propagate and in which order 
-the methods of components are executed.
-
-- If the system is simple, "sim" class may also construct the system. 
-(see Entities/inv_sim/inv_sim/inv_sim.)
-
-### Guidelines to be followed:
-
-- Components are not subclasses to sim or system class as they should be
+- Component entities Entity1-Entity-3 are not subclasses to sim or system class as they should be
     independent of each other and transferrable between systems. 
 
-- sim class is (usually) not a superclass to system class, as the "system" definitions 
+- System_sim class is should not be a superclass to system class, as the "system" definitions 
     are independent of how it is simulated.
 
 ## WHAT NEXT?:
