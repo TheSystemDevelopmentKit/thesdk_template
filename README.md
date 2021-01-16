@@ -48,8 +48,7 @@ models=[ 'py' ]
 ```
 and run 
 > ./configure && make clean && make all
-
-* TO CREATE AND TEST NEW ENTITY
+## How to create and test new entity
 
 Create a new entity with:
 > cd ./Entities
@@ -58,11 +57,10 @@ Create a new entity with:
 Test the new entity:
 > cd <NAME> && ./configure && make all
 
-See  
-> ../thesdk_helpers/initentity -h for help
+See  `../thesdk_helpers/initentity -h` for help
 The new entity is created as a git project. Push it to your favourite repository
 
-## HOW TO USE TheSyDeKick
+## How to use TheSyDeKick
 
 TheSyDeKick is a multi-tool simulation and developement environment for developing systems. 
 It targets to using a single control environment to simulate,design and measure the 
