@@ -127,7 +127,7 @@ Test the new entity:
 See  `../thesdk_helpers/initentity -h` for help
 The new entity is created as a git project. Push it to your favourite repository
 
-### WHAT NEXT?
+### What next?
 Take yout time to get acquainted with `Entities/inverter` and `Entities/inv_sim`  
 together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should  
 give you a picture how the things work. Create a new entity, and start playing a round with it.  
