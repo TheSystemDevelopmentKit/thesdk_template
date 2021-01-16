@@ -6,13 +6,11 @@ SUBMODULES="\
     ./Entities/rtl \
     ./Entities/spice \
     ./Entities/thesdk \
-    ./Entities/thesdk_helpers \
     ./Entities/inverter \
     ./Entities/inv_sim \
     ./Entities/myentity \
-    ./Simulations/Slidetemplate \
-    ./Simulations/Simtemplate \
-    ./Simulations/Inverter"
+    ./thesdk_helpers \
+"
 
 git submodule sync
 for mod in $SUBMODULES; do 

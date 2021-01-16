@@ -1,15 +1,8 @@
 [submodule "Entities/thesdk"]
 	path = Entities/thesdk
     url = git@github.com:TheSystemDevelopmentKit/thesdk.git
-[submodule "Simulations/Simtemplate"]
-	path = Simulations/Simtemplate
-    url = git@github.com:TheSystemDevelopmentKit/simtemplate.git
-[submodule "Simulations/Slidetemplate"]
-	path = Simulations/Slidetemplate
-    url = git@github.com:TheSystemDevelopmentKit/slidetemplate.git
-
-[submodule "Entities/thesdk_helpers"]
-	path = Entities/thesdk_helpers
+[submodule "thesdk_helpers"]
+	path = thesdk_helpers
 	url = git@github.com:TheSystemDevelopmentKit/thesdk_helpers.git
 [submodule "Entities/inverter"]
 	path = Entities/inverter
@@ -17,9 +10,6 @@
 [submodule "Entities/inv_sim"]
 	path = Entities/inv_sim
 	url = git@github.com:TheSystemDevelopmentKit/inv_sim.git
-[submodule "Simulations/Inverter"]
-	path = Simulations/Inverter
-	url = git@github.com:TheSystemDevelopmentKit/Inverter_simulation.git
 [submodule "Entities/rtl"]
 	path = Entities/rtl
 	url = git@github.com:TheSystemDevelopmentKit/rtl.git

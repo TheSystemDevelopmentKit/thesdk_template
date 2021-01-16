@@ -1,45 +1,26 @@
 #!/bin/sh
-#Last modification by Okko Järvinen, 07.10.2020 11:21
 #This script will set up some configuration  variables to be used by TheSDK by creating 
 #a file TheSDK.config that can be included to all other shell scripts
-PYTHON="python3.6"
-MATLAB="matlab"
-#this is your primary, top level modeling language
-CONTROLLER="PYTHON"
+PYTHON="python3"
 
 #These are generated here, but local configurations should be done to
 #  Root TheSDK.config which is not included in Git
 cat << EOF > ./TheSDK.config
 THESDKHOME="`cd \`dirname "$0"\` && pwd`"
-CONTROLLER="${CONTROLLER}"
 LSFSUBMISSION="bsub -K"
 LSFINTERACTIVE="bsub -I"
 
 #Variables below define the commands to be executed in Makefiles 
-#Non- Interative matlab submission
-#For non-LSF environment, remove the bsub and its options
-
-#Background matlab LSF submission (does not work with openlava)
-MATLAB="bsub -K ${MATLAB} -nodisplay -nosplash -nodesktop"
-#Non-LSF alternative
-#MATLAB="${MATLAB} -nodisplay -nosplash -nodesktop"
-
-#Interative matlab submission
-MATLABI="bsub -I ${MATLAB} -nodisplay -nosplash -nodesktop"
-
-#Graphical matlab LSF submission (does not work with openlava)
-MATLABG="bsub -I -XF ${MATLAB} -nosplash -desktop" 
-
-#Local (Nnon-LSF) python submission
+#Local (Non-LSF) python submission
 PYL="${PYTHON}" 
 
 #Non-interative LSF python submission
-PY="bsub -K ${PYTHON}"
+PY="${LSFSUBMISSION} ${PYTHON}"
 
 #Interative LSF python submission
-PYI="bsub -I ${PYTHON}"
+PYI="${LSFINTERACTIVE} ${PYTHON}"
 
-#Library paths
+#Library paths for Eldo and Spectre simulations
 #SPECTRELIBFILE=""
 #ELDOLIBFILE=""
 
