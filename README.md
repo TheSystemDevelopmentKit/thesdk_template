@@ -119,10 +119,11 @@ Following this guideline your entities retain compatibility with othe TheSyDeKic
 See Entities/inv_sim/inv_sim/__init__.py for reference.
 
 - Entities are documented with docstrings. To read the documentation, e.g:
-> cd Entities/rtl
-> ./configure && make doc
-> firefox ./doc/build/html/index.html
-
+```
+ cd Entities/rtl
+ ./configure && make doc
+ firefox ./doc/build/html/index.html
+```
 
 ## CLASS ORGANIZATION
 This is not a strict ruleset, rather a guideline how to ease your modeling tasks.
@@ -133,16 +134,16 @@ cross-reference to each other without restrictions. (Hardware) modules are insta
 
 * EXAMPLE of class hierarchy 
            
-> system_parameter_class(thesdk,spectre,rtl)
->           \                 /      /
->            \               /      /
->                "system_sim       /
->                     |           /
->                  "system"      /
->                 /     \       /
->        "entity1"  "entity2"
->           |
->       "entity3"
+  system_parameter_class(thesdk,spectre,rtl)
+             \                 /      /
+              \               /      /
+                  "system_sim       /
+                       |           /
+                    "system"      /
+                   /     \       /
+          "entity1"  "entity2"
+             |
+         "entity3"
 
 
 - TheSyDeKick classes are intended to collect methods common to "TheSyDeKick"-framework.
@@ -153,40 +154,39 @@ run verilog and vhdl simulations.
 run eldo and spectre simulations.
 - If component has an  rtl model, it should  be a a subclass of rtl. If component does not have rtl as a superclass, rtl-requirements do not apply. 
 
--Design specific classes are freely defined by the designer
+- Design specific classes are freely defined by the designer
     - The "system_parameter_class" may used as super class for the "system_sim" and
-    "system" (not subcomponent entities) to define the properties that typically 
+"system" (not subcomponent entities) to define the properties that typically 
         1. Are common to whole system design. 
         2. Need not to be altered between simulations, but are most often
         propagated through property inheritance.
 
-     - Typically a simulation is controlled by "system_sim" class that controls 
-       the simulation providing methods like  "run" and  "plot". This class usually contains a
-       "design under test", which is a instance of "system" class, and methods requiered to run the simulations.
-       (See: Entities/inv_sim/inv_sim/__init__py . As the test case for inv_sim is extremely simple, the DUT
-       is constructed inside it with 'define_simple method'. for more complex systems this is not preferred way.
-       This method should be in 'system' class.)
+    - Typically a simulation is controlled by "system_sim" class that controls 
+the simulation providing methods like  "run" and  "plot". This class usually contains a
+"design under test", which is a instance of "system" class, and methods requiered to run the simulations.
+(See: Entities/inv_sim/inv_sim/__init__py . As the test case for inv_sim is extremely simple, the DUT
+is constructed inside it with 'define_simple method'. for more complex systems this is not preferred way.
+This method should be in 'system' class.)
        
-     - System is described in "system"  class that determines the 
-       sub-components and the interconnections in between them, and methods to 
-       "run" the "system", i.e. how the signals propagate and in which order 
-       the methods of components are executed. 
-       Take  a look at 
-       > Entities/inv_verter/inv_verter/__init__.py
-       and
-       > Entities/inv_sim/inv_sim/__init__.py
+    - System is described in "system"  class that determines the 
+sub-components and the interconnections in between them, and methods to 
+"run" the "system", i.e. how the signals propagate and in which order 
+the methods of components are executed. Take  a look at 
+> Entities/inv_verter/inv_verter/__init__.py
+and
+> Entities/inv_sim/inv_sim/__init__.py
 
-- Class attributes are controlled and propagated by class constructor by copying the
-    selected properties from immediate "parent". The properties that are to be copied are determined 
-    by "proplist" attribute. By doing this isntead of using inherited classes, we keep entities independent of
-    their use environment i.e. they can be used freely in other desings. Still we can automate the propagation 
-    of the parameters.
+- Class attributes are controlled and propagated by class constructor by copying the  
+selected properties from immediate "parent". The properties that are to be copied are determined  
+by "proplist" attribute. By doing this isntead of using inherited classes, we keep entities independent of  
+their use environment i.e. they can be used freely in other desings. Still we can automate the propagation  
+of the parameters.
 
 - Component entities Entity1-Entity-3 are not subclasses to sim or system class as they should be
-    independent of each other and transferrable between systems. 
+independent of each other and transferrable between systems. 
 
 - System_sim class is should not be a superclass to system class, as the "system" definitions 
-    are independent of how it is simulated.
+are independent of how it is simulated.
 
 ## WHAT NEXT?:
 Take yout time to get acquainted with Entities/inverter and Entities/inv_sim
