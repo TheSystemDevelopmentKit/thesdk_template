@@ -134,16 +134,16 @@ cross-reference to each other without restrictions. (Hardware) modules are insta
 
 * EXAMPLE of class hierarchy 
            
->   system_parameter_class(thesdk,spectre,rtl)  
->              \                 /      /  
->               \               /      /  
->                   "system_sim       /  
->                       |            /  
->                     "system"      /  
->                   /     \        /  
->           "entity1"  "entity2"  
->             |  
->          "entity3"  
+        system_parameter_class(thesdk,spectre,rtl)  
+                   \                 /      /  
+                    \               /      /  
+                        "system_sim       /  
+                            |            /  
+                          "system"      /  
+                        /     \        /  
+                "entity1"  "entity2"  
+                  |  
+               "entity3"  
 
 
 - TheSyDeKick classes are intended to collect methods common to "TheSyDeKick"-framework.
