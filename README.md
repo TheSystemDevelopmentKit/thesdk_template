@@ -39,9 +39,13 @@ modify sourceme.csh if needed and source it
 
 If you wish to test the Python functionality only, edit Entities/inverter/inverter/__init__.py
 and Change the line
-> models=[ 'py', 'sv', 'vhdl', 'eldo', 'spectre' ]
+```
+models=[ 'py', 'sv', 'vhdl', 'eldo', 'spectre' ]
+```
 to
-> models=[ 'py' ]
+```
+models=[ 'py' ]
+```
 and run 
 > ./configure && make clean && make all
 
@@ -119,7 +123,7 @@ The main feature of TheSyDeKick is how to connect these objects together.
 Following this guideline your entities retain compatibility with othe TheSyDeKick entities.
 See Entities/inv_sim/inv_sim/__init__.py for reference.
 
-- Entities are documented with docstrings. To read the documentation, e.g:
+- Entities are documented with docstrings. To read the documentation, do:
 ```
  cd Entities/rtl
  ./configure && make doc
