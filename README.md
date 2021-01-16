@@ -1,14 +1,14 @@
 # TheSydeKick-System Development Kit
 Initiated by Marko Kosunen, marko.kosunen@aalto.fi 7.8.2017
 
-*OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL*
+* OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL *
 if you're using some other shell, change to tcsh or modify the scripts to be 
 compliant with your shell.
 > tcsh
 
 TheSyDeKick release 1.5 has been tested with Python v3.6
 
-## CONFIGURATION Quickstart
+## Configuration quickstart
 
 Go to TheSDK directory and run 
 > ./init_submodules.sh
@@ -48,18 +48,6 @@ models=[ 'py' ]
 ```
 and run 
 > ./configure && make clean && make all
-## How to create and test new entity
-
-Create a new entity with:
-> cd ./Entities
-> ../thesdk_helpers/initentity <NAME>
-
-Test the new entity:
-> cd <NAME> && ./configure && make all
-
-See  `../thesdk_helpers/initentity -h` for help
-The new entity is created as a git project. Push it to your favourite repository
-
 ## How to use TheSyDeKick
 
 TheSyDeKick is a multi-tool simulation and developement environment for developing systems. 
@@ -127,6 +115,18 @@ See Entities/inv_sim/inv_sim/__init__.py for reference.
  ./configure && make doc
  firefox ./doc/build/html/index.html
 ```
+### How to create and test new entity
+
+Create a new entity with:
+> cd ./Entities
+> ../thesdk_helpers/initentity <NAME>
+
+Test the new entity:
+> cd <NAME> && ./configure && make all
+
+See  `../thesdk_helpers/initentity -h` for help
+The new entity is created as a git project. Push it to your favourite repository
+
 
 ## CLASS ORGANIZATION
 This is not a strict ruleset, rather a guideline how to ease your modeling tasks.
@@ -189,9 +189,9 @@ independent of each other and transferrable between systems.
 - System_sim class is should not be a superclass to system class, as the "system" definitions 
 are independent of how it is simulated.
 
-## WHAT NEXT?:
-Take yout time to get acquainted with Entities/inverter and Entities/inv_sim
-together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should 
-give you a picture how the things work.
+## WHAT NEXT?
+Take yout time to get acquainted with `Entities/inverter` and `Entities/inv_sim`  
+together with the documentation of Entities/thesdk, Entities/rtl and Entities/spice. Those should  
+give you a picture how the things work. Create a new entity, and start playing a round with it.  
 
 See also: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial
