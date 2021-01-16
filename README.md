@@ -165,17 +165,15 @@ run eldo and spectre simulations.
     - Typically a simulation is controlled by "system_sim" class that controls 
 the simulation providing methods like  "run" and  "plot". This class usually contains a
 "design under test", which is a instance of "system" class, and methods requiered to run the simulations.
-(See: Entities/inv_sim/inv_sim/__init__py . As the test case for inv_sim is extremely simple, the DUT
+(See: `Entities/inv_sim/inv_sim/__init__py` . As the test case for inv_sim is extremely simple, the DUT
 is constructed inside it with 'define_simple method'. for more complex systems this is not preferred way.
 This method should be in 'system' class.)
        
     - System is described in "system"  class that determines the 
 sub-components and the interconnections in between them, and methods to 
 "run" the "system", i.e. how the signals propagate and in which order 
-the methods of components are executed. Take  a look at 
-> Entities/inv_verter/inv_verter/__init__.py
-and
-> Entities/inv_sim/inv_sim/__init__.py
+the methods of components are executed. Take  a look at `Entities/inv_verter/inv_verter/__init__.py`
+and `Entities/inv_sim/inv_sim/__init__.py`
 
 - Class attributes are controlled and propagated by class constructor by copying the  
 selected properties from immediate "parent". The properties that are to be copied are determined  
