@@ -4,9 +4,15 @@ Initiated by Marko Kosunen, marko.kosunen@aalto.fi 7.8.2017
 * OBS: THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL *
 if you're using some other shell, change to tcsh or modify the scripts to be 
 compliant with your shell.
-> tcsh
+```
+tcsh
+```
 
 TheSyDeKick release 1.5 has been tested with Python v3.6
+
+This is a very brief readme. For background information, see the wikipage
+[https://github.com/TheSystemDevelopmentKit/thesdk_template/wiki/The-System-Development-Kit](https://github.com/TheSystemDevelopmentKit/thesdk_template/wiki/The-System-Development-Kit, Wiki)
+
 
 ## Configuration quickstart
 
