@@ -19,3 +19,6 @@
 [submodule "Entities/spice"]
 	path = Entities/spice
 	url = git@github.com:TheSystemDevelopmentKit/spice.git
+[submodule "Entities/register_template"]
+	path = Entities/register_template
+	url = git@github.com:TheSDK-blocks/register_template.git
