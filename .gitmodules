@@ -22,3 +22,6 @@
 [submodule "Entities/register_template"]
 	path = Entities/register_template
 	url = git@github.com:TheSDK-blocks/register_template.git
+[submodule "doc/TheSyDeKick-roadshow"]
+	path = doc/TheSyDeKick-roadshow
+	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick-roadshow.git
