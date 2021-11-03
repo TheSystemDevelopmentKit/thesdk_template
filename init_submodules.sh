@@ -11,6 +11,7 @@ SUBMODULES="\
     ./Entities/myentity \
     ./Entities/register_template \
     ./thesdk_helpers \
+    ./doc/TheSyDeKick-roadshow \
 "
 
 git submodule sync
