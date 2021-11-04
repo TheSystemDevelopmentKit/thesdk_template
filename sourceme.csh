@@ -11,7 +11,7 @@ set scriptdir=`dirname $scriptfp`
 if ( ! $?PYTHONPATH ) then
     setenv PYTHONPATH $scriptdir/Entities/thesdk
 else
-    setenv PYTHONPATH ${PYTHONPATH}:$scriptdir/Entities/thesdk
+    setenv PYTHONPATH $scriptdir/Entities/thesdk:${PYTHONPATH}
 endif
 
 if ( -d ${HOME}/.local/bin && "${PATH}" !~ *"${HOME}/.local/bin"* ) then
