@@ -17,6 +17,7 @@ export PYTHONPATH
 
 cd ./thesdk_template
 git checkout v1.8_RC
+git pull
 
 ./configure
 
