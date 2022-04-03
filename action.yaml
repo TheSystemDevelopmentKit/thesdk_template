@@ -1,15 +1,16 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Documentation builder'
+description: 'Build the documentation for the project'
 inputs:
-  branch:  # id of input
-    description: 'The branch we document'
+  repo-toktok:  # id of input
+    description: 'GITHUB_TOKEN'
     required: true
-    default: 'v1.8_RC'
-      #outputs:
-      #  time: # id of output
-      #description: 'The time we greeted you'
+outputs:
+  outstring: # id of output (variable name)
+    description: 'What was barfed by the docker action'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-    - ${{ inputs.branch }}
+  args:
+    - ${{ inputs.repo-toktok }}
+
