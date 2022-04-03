@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  doc_build_job:
+    runs-on: ubuntu-latest
+    name: A job to build documentation
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Documentation builder action
+        id: docbuilder
+        uses: ./ # Uses an action in the root directory
+        with:
+          repo-toktok: ${{ secrets.THESYDEKICK_TOKEN }}
+          #who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output string
+        run: echo "Status is ${{ steps.docbuilder.outputs.outstring }}"
+

@@ -1,0 +1,15 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  branch:  # id of input
+    description: 'The branch we document'
+    required: true
+    default: 'v1.8_RC'
+      #outputs:
+      #  time: # id of output
+      #description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+    - ${{ inputs.branch }}
