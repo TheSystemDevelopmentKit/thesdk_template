@@ -3,22 +3,37 @@ on:
     branches:
       - master
       - v1.8_RC
+      - docker_image  
 
 jobs:
+  #image_pull:
+  #  runs-on: ubuntu-latest
+  #  name: Pull docker image
+  #  steps:
+  #    - name: Login to Github Packages
+  #      uses: docker/login-action@v1
+  #      with:
+  #        registry: ghcr.io
+  #        username: ${{ github.actor }}
+  #        password: ${{ secrets.GITHUB_TOKEN}}
+
+  #    - name: Pull image
+  #      uses: docker/login-action@v1
+  #      with:
+  #        registry: ghcr.io
+  #        username: ${{ github.actor }}
+  #        password: ${{ secrets.GITHUB_TOKEN}}
+  #    - name: Pull Docker image
+  #      run: docker pull 'ghcr.io/thesystemdevelopmentkit/dockertest:latest'
+
   doc_build_job:
     runs-on: ubuntu-latest
-    name: A job to build documentation
+    container: 'ghcr.io/thesystemdevelopmentkit/dockertest:latest'
+    name: Build documentation
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
       - name: Documentation builder action
         id: docbuilder
-        uses: ./ # Uses an action in the root directory
-        with:
-          repo-toktok: ${{ secrets.THESYDEKICK_TOKEN }}
-      # Use the output from the `hello` step
-      - name: Get the output string
-        run: echo "Status is ${{ steps.docbuilder.outputs.outstring }}"
+        run: ./CI-helpers/build_docs.sh ${{ secrets.THESYDEKICK_TOKEN }}
 

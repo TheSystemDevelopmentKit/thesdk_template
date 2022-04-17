@@ -6,11 +6,11 @@ inputs:
     description: 'GITHUB_TOKEN'
     required: true
 outputs:
-  outstring: # id of output (variable name)
+  outstring: # id of output (variable name
     description: 'What was barfed by the docker action'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/thesystemdevelopmentkit/dockertest:latest'
   args:
     - ${{ inputs.repo-toktok }}
 
