@@ -23,9 +23,11 @@ The idea of the documenation is the following:
 * doc/sources/sections.rst defines the contents of the documentation so that it can be included `as is`
   to compilation performed at another location. This documentaion is an example of that.
 
-* doc/sources/indices_and_tables.rst is a definition of automated glossary. It is separated from sections and index.rst in order not to repeat the glossaries in compilations at another location.
+* doc/sources/indices_and_tables.rst is a definition of automated glossary. It is separated from sections and 
+  index.rst in order not to repeat the glossaries in compilations at another location.
 
-* documentation is build in `<Entity>/doc` with `make html` . Under `<Entity>` the configure script should generate a Makefile with a recipe `doc` that executes `cd doc && make html`. 
+* documentation is build in `<Entity>/doc` with `make html` . Under `<Entity>` the configure script should 
+  generate a Makefile with a recipe `doc` that executes `cd doc && make html`. 
 
 
 Continuous implementation-build process for documentation
