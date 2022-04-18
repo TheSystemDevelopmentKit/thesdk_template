@@ -8,8 +8,8 @@ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 Current docstring documentation style is Numpy
 https://numpydoc.readthedocs.io/en/latest/format.html
 
-Documenation Strucure
-.....................
+Strucure
+--------
 
 Documentation of an Entity is defined in `<Entity>/doc`. You can use any of the core entities 
 (thesdk, rtl, spice) as an example. 
