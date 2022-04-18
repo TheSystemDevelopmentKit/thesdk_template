@@ -28,10 +28,12 @@ sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
 
 ./pip3userinstall.sh
 
-cd ./doc/docstrings
+cd ./doc
 
 make html
 
+# Let's push the docs to the docs project
+# There might be a more clever way to do this.
 git clone https://github.com/TheSystemDevelopmentKit/docs.git
 cd docs && git checkout main && git pull
 cp -rp ../build/html/* ./
@@ -41,12 +43,8 @@ git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
 git commit -m"Update docs" 
 git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/docs.git"
 
-#echo "Actor ${GITHUB_ACTOR}"
-echo "Actor ecdbot"
 echo "Pushing to https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/docs.git"
 git push 
 
-OUT="Success"
-echo $OUT
 exit 0
 
