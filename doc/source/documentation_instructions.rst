@@ -2,8 +2,31 @@
 Documentation instructions
 ==========================
 
+TheSyDeKick is documented with Sphinx automated docsring documentation using ReStructuredText.
+https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+
 Current docstring documentation style is Numpy
 https://numpydoc.readthedocs.io/en/latest/format.html
+
+Documenation Strucure
+.....................
+
+Documentation of an Entity is defined in `<Entity>/doc`. You can use any of the core entities 
+(thesdk, rtl, spice) as an example. 
+
+The idea of the documenation is the following:
+
+* doc/sources/conf.py defines the dependencies of the documenation Sphinx build.
+
+* doc/sources/index.rst defines the title and the structure of the Entity documenation
+
+* doc/sources/sections.rst defines the contents of the documentation so that it can be included `as is`
+  to compilation performed at another location. This documentaion is an example of that.
+
+* doc/sources/indices_and_tables.rst is a definition of automated glossary. It is separated from sections and index.rst in order not to repeat the glossaries in compilations at another location.
+
+* documentation is build in `<Entity>/doc` with `make html` . Under `<Entity>` the configure script should generate a Makefile with a recipe `doc` that executes `cd doc && make html`. 
+
 
 Continuous implementation-build process for documentation
 ---------------------------------------------------------
@@ -22,7 +45,7 @@ which defines the branch to which the pushes launces execution of a script `$THE
 Conlusion:
 
 * To edit the contents of the documenation, edit the docstrings of the entity python files, 
-  the files doc/sources of corresponding entities, and the files under THESDKHOME/dosc/sources.
+  the files doc/sources of corresponding entities, and the files under `THESDKHOME/dosc/sources`.
   
 * To reconfigure the build environment, modify https://github.com/TheSystemDevelopmentKit/thesdktestimage.
 
