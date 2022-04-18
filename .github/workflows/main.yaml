@@ -8,6 +8,9 @@ on:
 jobs:
   doc_build_job:
     runs-on: ubuntu-latest
+    # This project MUST be given permission to use the image blow. at
+    # Package settings-> Manage action access of the project hosting the
+    # package
     container: 'ghcr.io/thesystemdevelopmentkit/thesdktestimage:latest'
     name: Build documentation
     steps:
