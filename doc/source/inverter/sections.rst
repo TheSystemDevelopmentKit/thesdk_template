@@ -1,0 +1,1 @@
+../../../Entities/inverter/doc/source/sections.rst

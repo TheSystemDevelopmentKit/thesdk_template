@@ -19,6 +19,8 @@ TheSyDeKick - Complete kit for Sytem-on-Chip development
 
    spice/sections
 
+   inverter/sections
+
    documentation_instructions
 
    indices_and_tables
