@@ -8,8 +8,8 @@ https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 Current docstring documentation style is Numpy
 https://numpydoc.readthedocs.io/en/latest/format.html
 
-Strucure
---------
+Structure
+---------
 
 Documentation of an Entity is defined in `<Entity>/doc`. You can use any of the core entities 
 (thesdk, rtl, spice) as an example. 
@@ -30,7 +30,7 @@ The idea of the documenation is the following:
   generate a Makefile with a recipe `doc` that executes `cd doc && make html`. 
 
 
-Continuous implementation-build process for documentation
+Continuous Implementation build process for documentation
 ---------------------------------------------------------
 
 Documentation build environment for Sphinx-docstrings build are located in `$THESDKHOME/docs`
