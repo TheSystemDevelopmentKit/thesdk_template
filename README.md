@@ -13,6 +13,7 @@ TheSyDeKick release 1.5 has been tested with Python v3.6
 This is a very brief readme. For background information, see the wikipage
 [https://github.com/TheSystemDevelopmentKit/thesdk_template/wiki/The-System-Development-Kit](https://github.com/TheSystemDevelopmentKit/thesdk_template/wiki/The-System-Development-Kit "Wiki")
 
+For documenation, see [https://thesystemdevelopmentkit.github.io/docs/index.html](https://thesystemdevelopmentkit.github.io/docs/index.html) 
 
 ## Configuration quickstart
 
