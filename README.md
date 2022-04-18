@@ -104,7 +104,7 @@ The files are organized in directories as follows
                     |
                     entity1.cir
                     tb_entity1.cir
-                Simulations
+                simulations
                     rtlsim
                         |
                         work
