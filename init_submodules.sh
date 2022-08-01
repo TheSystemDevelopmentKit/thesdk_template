@@ -7,6 +7,7 @@ SUBMODULES="\
     ./Entities/spice \
     ./Entities/thesdk \
     ./Entities/inverter \
+    ./Entities/inverter_testbench \
     ./Entities/inv_sim \
     ./Entities/myentity \
     ./Entities/register_template \

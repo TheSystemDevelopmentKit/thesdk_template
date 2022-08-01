@@ -25,3 +25,6 @@
 [submodule "doc/TheSyDeKick-roadshow"]
 	path = doc/TheSyDeKick-roadshow
 	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick-roadshow.git
+[submodule "Entities/inverter_testbench"]
+	path = Entities/inverter_testbench
+	url = git@github.com:TheSystemDevelopmentKit/inverter_testbench.git
