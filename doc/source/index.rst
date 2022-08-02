@@ -25,6 +25,8 @@ TheSyDeKick - Complete kit for Sytem-on-Chip development
 
    inverter_tests/sections
 
+   ads/sections
+
    documentation_instructions
 
    indices_and_tables

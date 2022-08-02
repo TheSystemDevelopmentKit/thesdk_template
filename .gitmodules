@@ -28,3 +28,6 @@
 [submodule "Entities/inverter_tests"]
 	path = Entities/inverter_tests
 	url = git@github.com:TheSystemDevelopmentKit/inverter_tests.git
+[submodule "Entities/ads"]
+	path = Entities/ads
+	url = git@github.com:TheSystemDevelopmentKit/ads.git
