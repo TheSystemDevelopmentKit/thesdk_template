@@ -12,6 +12,7 @@ SUBMODULES="\
     ./Entities/inverter_tests \
     ./Entities/myentity \
     ./Entities/register_template \
+    ./Entities/ads_template \
     ./thesdk_helpers \
     ./doc/TheSyDeKick-roadshow \
 "
