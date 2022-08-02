@@ -7,9 +7,6 @@
 [submodule "Entities/inverter"]
 	path = Entities/inverter
 	url = git@github.com:TheSystemDevelopmentKit/inverter.git
-[submodule "Entities/inv_sim"]
-	path = Entities/inv_sim
-	url = git@github.com:TheSystemDevelopmentKit/inv_sim.git
 [submodule "Entities/rtl"]
 	path = Entities/rtl
 	url = git@github.com:TheSystemDevelopmentKit/rtl.git

@@ -9,7 +9,6 @@ SUBMODULES="\
     ./Entities/inverter \
     ./Entities/inverter_testbench \
     ./Entities/inverter_test \
-    ./Entities/inv_sim \
     ./Entities/myentity \
     ./Entities/register_template \
     ./thesdk_helpers \
