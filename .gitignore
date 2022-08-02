@@ -6,5 +6,6 @@ __pycache__
 *.swp
 *.swo
 doc/build/*
+doc/docstrings/build/*
 *tags
 
