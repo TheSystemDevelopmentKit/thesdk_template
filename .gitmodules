@@ -34,3 +34,6 @@
 [submodule "Entities/ads_template"]
 	path = Entities/ads_template
 	url = git@github.com:TheSystemDevelopmentKit/ads_template.git
+[submodule "doc/TheSyDeKick_tutorial"]
+	path = doc/TheSyDeKick_tutorial
+	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick_tutorial.git
