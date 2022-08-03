@@ -15,6 +15,7 @@ SUBMODULES="\
     ./Entities/ads_template \
     ./thesdk_helpers \
     ./doc/TheSyDeKick-roadshow \
+    ./doc/TheSyDeKick_tutorial \
 "
 
 git submodule sync
