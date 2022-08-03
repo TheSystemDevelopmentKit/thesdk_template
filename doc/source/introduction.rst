@@ -104,7 +104,7 @@ The files are organized in directories as follows::
                      |                          
                      __init__.py                
                      other_module.py            
-                vhd                             
+                vhdl                             
                     |                           
                     entity1.vhd                 
                     tb_entity1.vhd                                     
@@ -120,6 +120,8 @@ The files are organized in directories as follows::
                     rtlsim
                         |
                         work
+
+Naming convention is strict. The placeholder string 'entity1' above identifies the name of the Entity and it's netllists ans testbenches. User is not allowed to freely name the files. This is the basic configuration.
 
 Guidelines to follow
 --------------------
