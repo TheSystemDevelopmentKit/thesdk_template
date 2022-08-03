@@ -1,7 +1,11 @@
 TheSDK.config
 __pycache__
 *.eps
-*.pdf
+Entities/*/*.pdf
 *~
 *.swp
 *.swo
+doc/build/*
+doc/docstrings/build/*
+*tags
+

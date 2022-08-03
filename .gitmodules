@@ -7,9 +7,6 @@
 [submodule "Entities/inverter"]
 	path = Entities/inverter
 	url = git@github.com:TheSystemDevelopmentKit/inverter.git
-[submodule "Entities/inv_sim"]
-	path = Entities/inv_sim
-	url = git@github.com:TheSystemDevelopmentKit/inv_sim.git
 [submodule "Entities/rtl"]
 	path = Entities/rtl
 	url = git@github.com:TheSystemDevelopmentKit/rtl.git
@@ -25,3 +22,18 @@
 [submodule "doc/TheSyDeKick-roadshow"]
 	path = doc/TheSyDeKick-roadshow
 	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick-roadshow.git
+[submodule "Entities/inverter_testbench"]
+	path = Entities/inverter_testbench
+	url = git@github.com:TheSystemDevelopmentKit/inverter_testbench.git
+[submodule "Entities/inverter_tests"]
+	path = Entities/inverter_tests
+	url = git@github.com:TheSystemDevelopmentKit/inverter_tests.git
+[submodule "Entities/ads"]
+	path = Entities/ads
+	url = git@github.com:TheSystemDevelopmentKit/ads.git
+[submodule "Entities/ads_template"]
+	path = Entities/ads_template
+	url = git@github.com:TheSystemDevelopmentKit/ads_template.git
+[submodule "doc/TheSyDeKick_tutorial"]
+	path = doc/TheSyDeKick_tutorial
+	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick_tutorial.git

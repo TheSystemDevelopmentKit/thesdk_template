@@ -7,6 +7,8 @@ PYTHON="python3"
 #  Root TheSDK.config which is not included in Git
 cat << EOF > ./TheSDK.config
 THESDKHOME="`cd \`dirname "$0"\` && pwd`"
+
+#Comment these if you do not have LSF
 LSFSUBMISSION="bsub -K"
 LSFINTERACTIVE="bsub -I"
 
