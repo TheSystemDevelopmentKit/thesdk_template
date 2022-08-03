@@ -1,1 +1,0 @@
-../../../Entities/ads/doc/source/initial_setup_tutorial.py

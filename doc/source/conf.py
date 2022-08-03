@@ -22,6 +22,10 @@ sys.path.insert(0, os.path.abspath('../../Entities/thesdk'))
 sys.path.insert(0, os.path.abspath('../../Entities/rtl'))
 sys.path.insert(0, os.path.abspath('../../Entities/spice'))
 sys.path.insert(0, os.path.abspath('../../Entities/inverter'))
+sys.path.insert(0, os.path.abspath('../../Entities/inverter_testbench'))
+sys.path.insert(0, os.path.abspath('../../Entities/inverter_tests'))
+sys.path.insert(0, os.path.abspath('../../Entities/ads'))
+sys.path.insert(0, os.path.abspath('../../Entities/ads_template'))
 
 
 # -- Project information -----------------------------------------------------
