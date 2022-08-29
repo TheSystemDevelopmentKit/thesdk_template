@@ -9,13 +9,12 @@ cat << EOF > ./TheSDK.config
 THESDKHOME="`cd \`dirname "$0"\` && pwd`"
 
 #Comment these if you do not have LSF
-$(
-if [ -z "`command -v bsub`" ]; then
-echo '#LSFSUBMISSION="bsub -K"'
-echo '#LSFINTERACTIVE="bsub -I"'
+$(if [ -z "`command -v bsub`" ]; then
+    echo '#LSFSUBMISSION="bsub -K"'
+    echo '#LSFINTERACTIVE="bsub -I"'
 else
-echo 'LSFSUBMISSION="bsub -K"'
-echo 'LSFINTERACTIVE="bsub -I"'
+    echo 'LSFSUBMISSION="bsub -K"'
+    echo 'LSFINTERACTIVE="bsub -I"'
 fi)
 
 #Variables below define the commands to be executed in Makefiles 
