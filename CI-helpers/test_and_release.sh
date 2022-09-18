@@ -57,13 +57,13 @@ if [ -z "${BRANCH}" ]; then
     exit 1
 fi
 
-if [ "${CICD}" == "1" ] && [ -z "$TOKEN" ]; then
+if [ -z "$TOKEN" ]; then
     echo "Token must be provided for CI/CD"
     exit 1
 fi
 
 # Assumption is that we are working in the clone of the submodule project.
-WORDIR=$(pwd)
+WORKDIR=$(pwd)
 PID="$$"
 ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
 HASH="$(git rev-parse --verify HEAD)"
@@ -73,7 +73,7 @@ git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesd
 PYTHONPATH="$(pwd)/thesdk_template_${PID}/Entities"
 export PYTHONPATH
 
-cd ./thesdk_template_${PID}
+cd ${WORKDIR}/thesdk_template_${PID}
 TEMPLATEDIR="$(pwd)"
 git checkout "$BRANCH"
 git pull
@@ -123,6 +123,7 @@ if [ "$STATUS" == "0" ]; then
         git config --global user.name "ecdbot"
         git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
     fi
+    git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
     git push 
 fi
 cd ${WORKDIR} && rm -rf ./thesdk_template_${PID} 
