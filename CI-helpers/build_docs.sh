@@ -12,9 +12,9 @@ TOKEN=$1
 # Assumption is that we are working in the cloe of this project.
 
 # Local pip-installations to follow the dependencies of the main program
-mkdir ${HOME}/.local
-mkdir ${HOME}/.local/bin
-PATH="${PATH}:${HOME}./local:${HOME}/.local/bin"
+#mkdir ${HOME}/.local
+#mkdir ${HOME}/.local/bin
+#PATH="${PATH}:${HOME}./local:${HOME}/.local/bin"
 
 #if [ -d ./thesdk_template ]; then
 #    rm -rf ./thesdk_template
@@ -35,7 +35,7 @@ sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
     && git submodule sync \
     && git submodule update --init
 
-./pip3userinstall.sh
+#./pip3userinstall.sh
 
 cd ./doc
 make html
