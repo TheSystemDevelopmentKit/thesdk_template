@@ -14,7 +14,7 @@ Structure
 Documentation of an Entity is defined in `<Entity>/doc`. You can use any of the core entities 
 (thesdk, rtl, spice) as an example. 
 
-The idea of the documenation is the following:
+The idea of the documentation is the following:
 
 * doc/sources/conf.py defines the dependencies of the documenation Sphinx build.
 
