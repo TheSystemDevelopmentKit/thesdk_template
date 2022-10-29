@@ -29,6 +29,7 @@ TOKEN=$1
 #git checkout v1.8_RC
 #git pull
 
+git config --global --add safe.directory /__w/thesdk_template/thesdk_template
 # Normal workflow
 ./configure
 sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
