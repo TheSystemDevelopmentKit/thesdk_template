@@ -23,12 +23,12 @@ DESCRIPTION
    Defines and runs tests for the submodules of thesdk_template
 
 OPTIONS
-  .b 
+  -b 
      Branch of thesdk_template to operate on
      Commit and push to that branch after testing.
 
   -c Run in CI/CD with this option 
-      .
+
   -t
      STRING : Access token 
   -h
