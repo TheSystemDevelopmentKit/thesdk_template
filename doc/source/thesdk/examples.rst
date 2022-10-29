@@ -1,1 +1,0 @@
-../../../Entities/thesdk/doc/source/examples.rst
