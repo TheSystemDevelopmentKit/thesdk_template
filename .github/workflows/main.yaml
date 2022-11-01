@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Documentation builder action
-        run: ./CI-helpers/build_docs.sh ${{ secrets.THESYDEKICK_TOKEN }}
+        run: ./CI-helpers/build_docs.sh -c -t ${{ secrets.THESYDEKICK_TOKEN }}
 
 ## This is an example how to run a image pull if needed.
 #  image_pull:
