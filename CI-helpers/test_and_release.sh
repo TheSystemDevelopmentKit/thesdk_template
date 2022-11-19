@@ -1,8 +1,8 @@
 #!/bin/sh -l
 #############################################################################
-# Test and relesase script for TheSyDeKick
+# Test and relesase script for TheSyDeKick thesdk_template
 # Intended operation: When pushed to the latest release-candidate branch
-# The particular module is updated to the HEAD of thesdk_template and the operation 
+# The all major Entity submodules are updated to the HEAD of thesdk_template and the operation 
 # is tested by running the inverter selftest (probably other tests in the future)
 # If the tests are passed, the resulting updated thesdk_template module is pushed to
 # the latest development branch.
@@ -62,43 +62,61 @@ if [ -z "$TOKEN" ]; then
     exit 1
 fi
 
-# Assumption is that we are working in the clone of the submodule project.
-WORKDIR=$(pwd)
 PID="$$"
-ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
+#If not in CICD, we will meke a test clone.
+if [ "$CICD" != "1" ]; then
+    git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
+    cd ./thesdk_template_${PID}
+    WORKDIR=$(pwd)
+    git checkout "$BRANCH"
+    git pull
+else
+    WORKDIR=$(pwd)
+fi
+# Assumption is that we are working in the latest commit of thesdk_template.
+#ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
 HASH="$(git rev-parse --verify HEAD)"
 MESSAGE="$(git log -1 --pretty=%B | head -n 1)"
 
-git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
-PYTHONPATH="$(pwd)/thesdk_template_${PID}/Entities"
+PYTHONPATH="$(pwd)/Entities"
 export PYTHONPATH
 
-cd ${WORKDIR}/thesdk_template_${PID}
-TEMPLATEDIR="$(pwd)"
-git checkout "$BRANCH"
-git pull
-
-# Local pip-installations to follow the dependencies of the main program
-mkdir ${HOME}/.local
-mkdir ${HOME}/.local/bin
+# For local pip-installations to follow the dependencies of the main program
+mkdir -p ${HOME}/.local/bin
 PATH="${PATH}:${HOME}./local:${HOME}/.local/bin"
+TEMPLATEDIR="$(pwd)"
 
 # Normal workflow
 ./configure
-sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
-    && git submodule sync \
-    && git submodule update --init
+# change ssh submodule urls to git
+if [ "$CICD" == "1" ]; then
+    sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules
+fi
+#Init the submodules as user would
+${WORKDIR}/init_submodules.sh
 
+# Test the dependency installation
 ./pip3userinstall.sh
 
-cd ./Entities/${ENTITY}
-git checkout ${HASH}
+SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs)"
+UNDERDEVEL=""
+for entity in ${SUBMODULES}; do 
+    echo "In $entity:"
+    cd ${WORKDIR}/${entity} && git checkout ${BRANCH} 2> /dev/null
+    if [ "$?" == "0" ]; then
+        cd ${WORKDIR}/${entity} && git pull
+        UNDERDEVEL="${UNDERDEVEL} ${entity}"
+    else
+        echo "Branch ${BRANCH} does not exist for submodule ${entity}. No changes made."
+    fi
+    cd ${WORKDIR}
+done
 
 cd $TEMPLATEDIR
 # Let's perform the test(s)
 cd ${TEMPLATEDIR}/Entities/inverter && ./configure &&  make sim
 SIMSTAT=$?
-cd ${TEMPLATEDIR}/Entities/inverter && ./configure &&  make doc
+cd ${TEMPLATEDIR}/doc && make html
 DOCSTAT=$?
 
 if [ "$SIMSTAT" !=  "0" ] \
@@ -112,18 +130,29 @@ fi
 
 if [ "$STATUS" == "0" ]; then
     cd $TEMPLATEDIR
-    echo "Staging ./Entities/${ENTITY}"
-    git add ./Entities/${ENTITY}
+    for entity in ${UNDERDEVEL}; do 
+        echo "Staging $entity"
+        git add ${entity}
+    done
 
-    echo "Committing ./Entities/${ENTITY}"
-    COMMITMESSAGE="$(echo -e "Update Entity ${ENTITY}:\n\n"$MESSAGE"\n\n")"
+    echo "Committing changes"
+    MSG=""
+    COMMITMESSAGE="$(
+    cat << EOF
+Auto update entities
+
+$(for entity in ${UNDERDEVEL}; do
+    echo $entity
+done)
+EOF
+)"
     echo "$COMMITMESSAGE"
     git commit -m"$COMMITMESSAGE"
     if [ ${CICD} == "1" ]; then 
         git config --global user.name "ecdbot"
         git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
+        #git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
     fi
-    git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
     git push 
 fi
 cd ${WORKDIR} && rm -rf ./thesdk_template_${PID} 
