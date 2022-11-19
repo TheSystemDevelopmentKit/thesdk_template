@@ -66,6 +66,7 @@ PID="$$"
 #If not in CICD, we will meke a test clone.
 if [ "$CICD" != "1" ]; then
     git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
+    git config --global --add safe.directory /__w/thesdk_template/thesdk_template
     cd ./thesdk_template_${PID}
     WORKDIR=$(pwd)
     git checkout "$BRANCH"
