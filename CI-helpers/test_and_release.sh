@@ -101,9 +101,10 @@ ${WORKDIR}/init_submodules.sh
 SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs)"
 UNDERDEVEL=""
 for entity in ${SUBMODULES}; do 
-    cd ${WORKDIR}/${ENTITY} && git checkout ${BRANCH} 
+    echo "In $entity:"
+    cd ${WORKDIR}/${entity} && git checkout ${BRANCH} 2> /dev/null
     if [ "$?" == "0" ]; then
-        cd ${WORKDIR}/${ENTITY} && git pull
+        cd ${WORKDIR}/${entity} && git pull
         UNDERDEVEL="${UNDERDEVEL} ${entity}"
     else
         echo "Branch ${BRANCH} does not exist for submodule ${entity}. No changes made."
