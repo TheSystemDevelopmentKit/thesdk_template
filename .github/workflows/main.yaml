@@ -18,6 +18,19 @@ jobs:
       - name: Documentation builder action
         run: ./CI-helpers/build_docs.sh -c -t ${{ secrets.THESYDEKICK_TOKEN }}
 
+  submodule_update_job:
+    runs-on: ubuntu-latest
+    # This project MUST be given permission to use the image blow. at
+    # Package settings-> Manage action access of the project hosting the
+    # package
+    container: 'ghcr.io/thesystemdevelopmentkit/thesdktestimage:latest'
+    name: Build documentation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Documentation builder action
+        run: ./CI-helpers/test_and_release.sh -c ${GITHUB_REF##*/} -t ${{ secrets.THESYDEKICK_TOKEN }}
+
 ## This is an example how to run a image pull if needed.
 #  image_pull:
 #    runs-on: ubuntu-latest

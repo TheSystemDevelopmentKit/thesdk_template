@@ -62,25 +62,29 @@ if [ -z "$TOKEN" ]; then
     exit 1
 fi
 
-# Assumption is that we are working in the latest commit of thesdk_template.
-WORKDIR=$(pwd)
 PID="$$"
+#If not in CICD, we will meke a test clone.
+if [ "$CICD" != "1" ]; then
+    git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
+    cd ./thesdk_template_${PID}
+    WORKDIR=$(pwd)
+    git checkout "$BRANCH"
+    git pull
+else
+    WORKDIR=$(pwd)
+fi
+# Assumption is that we are working in the latest commit of thesdk_template.
 #ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
 HASH="$(git rev-parse --verify HEAD)"
 MESSAGE="$(git log -1 --pretty=%B | head -n 1)"
 
-#git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
 PYTHONPATH="$(pwd)/Entities"
 export PYTHONPATH
 
-# Local pip-installations to follow the dependencies of the main program
-mkdir ${HOME}/.local
-mkdir ${HOME}/.local/bin
+# For local pip-installations to follow the dependencies of the main program
+mkdir -p ${HOME}/.local/bin
 PATH="${PATH}:${HOME}./local:${HOME}/.local/bin"
-
 TEMPLATEDIR="$(pwd)"
-#git checkout "$BRANCH"
-#git pull
 
 # Normal workflow
 ./configure
@@ -94,7 +98,7 @@ ${WORKDIR}/init_submodules.sh
 # Test the dependency installation
 ./pip3userinstall.sh
 
-SUBMODULES="sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs"
+SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs)"
 UNDERDEVEL=""
 for entity in ${SUBMODULES}; do 
     cd ${WORKDIR}/${ENTITY} && git checkout ${BRANCH} 
@@ -111,7 +115,7 @@ cd $TEMPLATEDIR
 # Let's perform the test(s)
 cd ${TEMPLATEDIR}/Entities/inverter && ./configure &&  make sim
 SIMSTAT=$?
-cd ${TEMPLATEDIR}/Entities/inverter && ./configure &&  make doc
+cd ${TEMPLATEDIR}/doc && make html
 DOCSTAT=$?
 
 if [ "$SIMSTAT" !=  "0" ] \
