@@ -94,10 +94,12 @@ if [ "$CICD" == "1" ]; then
     sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules
 fi
 #Init the submodules as user would
+#Currently fails on ssh cloned subsubmodules
 ${WORKDIR}/init_submodules.sh
 
 # Test the dependency installation
-./pip3userinstall.sh
+# These are already in the buildimage
+#./pip3userinstall.sh
 
 SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs)"
 UNDERDEVEL=""
