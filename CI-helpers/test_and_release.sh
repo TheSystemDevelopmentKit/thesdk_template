@@ -148,12 +148,12 @@ done)
 EOF
 )"
     echo "$COMMITMESSAGE"
-    git commit -m"$COMMITMESSAGE"
     if [ ${CICD} == "1" ]; then 
         git config --global user.name "ecdbot"
         git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
-        #git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
+        git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
     fi
+    git commit -m"$COMMITMESSAGE"
     git push 
 fi
 cd ${WORKDIR} && rm -rf ./thesdk_template_${PID} 
