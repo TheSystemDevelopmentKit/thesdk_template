@@ -1,6 +1,3 @@
-
-
-
 ===========================
 Introduction to TheSyDeKick
 ===========================
@@ -14,10 +11,12 @@ on Chip (SoC's). The operation principle of TheSDK is depicted below.
 .. image:: Pics/bitmaps/TheSDK_block_diagram.png
   :alt: TheSDK block diagram
 
+This is the master documentation of TheSystem development kit. These pages
+provide an introduction and browsable documentation for the core Entities:
+thesdk, rtl, spice and ads.
 
 Operation principle
 -------------------
-
 
 TheSyDeKick supports the system design by "testing first" principle. Design is
 started by writing a system test bench and simple model for the design under
@@ -28,31 +27,9 @@ simulators like Spectre, Eldo or Questasim. This makes it possible to write the
 test cases and analyses for the system only once, and carry out the circuit
 development with those tests from beginning to end.
 
-TheSyDeKick also aims for full support of system measurements. The intended
-operation is that once the circuit or system is manufactured, the signal
-sources and analyzers of TheSDK model are replaced with measurement equipment,
-and the same tests are carried out for the actual hardware within the same
-framework. However, this requires a measurement hardware driver libraries that
-are to be developed. V1.3 does not support measurements.
-
 It targets to using a single control environment to simulate, design and measure
 the system components with various tools by using a single "Control
 environment" for control, analysis, and visualization of the results.
-
-This is the master documentation of TheSystem development kit. These pages
-provide an introduction and browsable documentation for the core Entities:
-thesdk, rtl, spice and ads.
-
-Operation principle
--------------------
-TheSyDeKick supports the system design by "testing first" principle. Design is
-started by writing a system test bench and simple model for the design under
-test with Python. Gradually the implementation details are added to the DUT by
-introducing analog circuit model or RTL level descriptions of digital
-circuitry. Circuit level simulations are executed by calling external
-simulators like Spectre, Eldo, Ngspice, Questasim or Icarus. This makes it possible to write the
-test cases and analyses for the system only once, and carry out the circuit
-development with those tests from beginning to end.
 
 TheSyDeKick also aims for full support of system measurements. The intended
 operation is that once the circuit or system is manufactured, the signal
