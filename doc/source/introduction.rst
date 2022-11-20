@@ -1,9 +1,39 @@
+
+
+
 ===========================
 Introduction to TheSyDeKick
 ===========================
 
-TheSyDeKick (abbreviated from 'The System Development Kit') is a multi-tool simulation and developement environment for
-developing systems. Development was initiated by Marko Kosunen, marko.kosunen<at>aalto.fi 7.8.2017
+What is the TheSydeKick
+=======================
+TheSyDeKick is a development and testing framework for electronic systems. It
+is primarily targeted for design and testing of integrated circuits and Systems
+on Chip (SoC's). The operation principle of TheSDK is depicted below.
+
+.. image:: Pics/bitmaps/TheSDK_block_diagram.png
+  :alt: TheSDK block diagram
+
+
+Operation principle
+-------------------
+
+
+TheSyDeKick supports the system design by "testing first" principle. Design is
+started by writing a system test bench and simple model for the design under
+test with Python. Gradually the implementation details are added to the DUT by
+introducing analog circuit model or RTL level descriptions of digital
+circuitry. Circuit level simulations are executed by calling external
+simulators like Spectre, Eldo or Questasim. This makes it possible to write the
+test cases and analyses for the system only once, and carry out the circuit
+development with those tests from beginning to end.
+
+TheSyDeKick also aims for full support of system measurements. The intended
+operation is that once the circuit or system is manufactured, the signal
+sources and analyzers of TheSDK model are replaced with measurement equipment,
+and the same tests are carried out for the actual hardware within the same
+framework. However, this requires a measurement hardware driver libraries that
+are to be developed. V1.3 does not support measurements.
 
 It targets to using a single control environment to simulate, design and measure
 the system components with various tools by using a single "Control
@@ -13,7 +43,146 @@ This is the master documentation of TheSystem development kit. These pages
 provide an introduction and browsable documentation for the core Entities:
 thesdk, rtl, spice and ads.
 
+Operation principle
+-------------------
+TheSyDeKick supports the system design by "testing first" principle. Design is
+started by writing a system test bench and simple model for the design under
+test with Python. Gradually the implementation details are added to the DUT by
+introducing analog circuit model or RTL level descriptions of digital
+circuitry. Circuit level simulations are executed by calling external
+simulators like Spectre, Eldo, Ngspice, Questasim or Icarus. This makes it possible to write the
+test cases and analyses for the system only once, and carry out the circuit
+development with those tests from beginning to end.
 
+TheSyDeKick also aims for full support of system measurements. The intended
+operation is that once the circuit or system is manufactured, the signal
+sources and analyzers of TheSDK model are replaced with measurement equipment,
+and the same tests are carried out for the actual hardware within the same
+framework. This requires a measurement hardware driver libraries that
+are to be developed and released independently from TheSyDeKick core modules to 
+follow the key principple of TheSyDekick: modularity.
+
+Modular system description with objects
+---------------------------------------
+As TheSyDeKick targets hardware modeling, every instance can be thought as a
+piece of equipment or hardware, as depicted below 
+
+.. image:: Pics/bitmaps/TheSDK_operation_principle.png
+  :alt: TheSDK operation principle
+
+The entity object can contain almost anything, but it should follow two principles.
+
+#. Inputs and outputs are pointers defined by TheSyDeKick IO class.  
+#. Entity object, i.e. intance of thesdk class has a method that takes the
+   value of an input pointer, manipulates it and assigns it to the value
+   of the output pointer.
+
+This make is possible to first implement the connections between the objects,
+i.e. system components, and then pass the signals by calling the run methods of
+the objects in controlled order. The call sequence control of the the
+components ultimately form a scheduler, but currently this control is up to
+user.
+
+Reader is strongly encouraged to clone the repository and to run the
+simulations as described in the README. That is a simple example case in were a
+chain of inverters is simulated with python, verilog, vhdl, and Eldo, analog
+circuit simulator. Even you would not have access to rtl simulator or eldo, the
+python example is sufficient to demonstrate the operation principles of
+TheSyDeKick.
+
+System modeling and design exploration
+--------------------------------------
+It is evident that high level programming lanquages provide good tools for
+system modeling. In addition, it is intended to develop interface classes for
+Berkeley Analog Generator BAG and Chisel3 RTL generators to enable closed-loop
+design optimization and desing exploration with real hardware.  
+
+Further reading and related information
+---------------------------------------
+* A Roadshow slideset demostrating some use cases can be found at https://github.com/TheSystemDevelopmentKit/TheSyDeKick-roadshow/raw/master/pdffiles/TheSyDeKick-roadshow.pdf
+* A tutorial for very basic use of TheSyDeKick is provided at: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial . 
+  See the slide set forr details: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial/raw/master/pdffiles/TheSyDeKick_tutorial.pdf 
+* Site https://github.com/TheSDK-blocks is a intended to distribute TheSDK-compatible, relatively general circuit models.
+
+
+Project status and releases
+---------------------------
+Release schedule
+................
+Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.9_RC'
+
+**Roadmap for the next release is roughly**
+
+* Support for Verilator
+* Improved support for vhdl/verilog mixed language simulations, i.e refactoring of rtl and spice modules.
+* Suport for CoCoTb
+* Interface class for Chisel3 RTL generator
+* Interface classes for Berkeley Analog Generator (currently works without)
+
+For details, check the "Release" projects
+
+**A bit longer term roadmap**
+
+* Server based RTL simulation enabling single-sample push-pull and multi-tool feedback simulations.
+
+Release history
+...............
+**Release v1.8 (3.8.2022)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Improved documentation: Core blocks documented with CI/CD at https://thesystemdevelopmentkit.github.io/docs/index.html
+* ADS simulator interface module.
+* Speedup for module addition to Python path
+* Support for parametrized netlists
+* Custom source locatoins for RTL simulations
+* Bugfixes for VHDL simulations
+* Several bugfixes for spice simulations
+
+**Release v1.7 (20.1.2022)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Improved documentation in spice
+* Unified IO file handling in all analog simulators
+* Speed up of event-bsed IO file handling.
+* Improved intermediate file cleanups.
+* Possibility to save the state of an entity to a binary file and read it back.
+* Colored log messages for improved clarity.
+* File cache flushing speeds up rtl simulations.
+* Custom rtl simulator dofile locations and possibility to control the content of the dofile from Entity.
+* Improved parallel run execution.
+
+**Release v1.6 (11.8.2021)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Support for NGSpice
+* Support for AC simulations in spectre, eldo, and ngspice through modifications in IO file handling. Less tested with eldo.
+* Model 'hw' for measurement equipment driver support.
+* Currently supported models: Python, verilog, VHDL, eldo, spectre and ngspice netlists.
+* Simulation speed up for RTL event type IOs through with sorted dicts.
+* Development has been carried out for Python v3.6, runs also with python 3.9
+
+**Release v1.5 (16.1.2021)**
+
+* Main progress: This is mainly an bugfix and documentation improvement release. ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+  initentity now initializes the minimum barebone buffer. Use of more complex template is optional.
+* Python dependency installations now optionally upgrade already installed packages.
+  * Currently supported models: Python, verilog, VHDL, eldo and spectre netlists.
+  * Development has been carried out for Python v3.6
+
+**Release v1.4 (14.6.2020->7.10.2020)**
+
+* Main progress: Support for Mentor graphics eldo and Cadence spectre merged to common 'spice' module ( See: https://github.com/TheSystemDevelopmentKit/inverter or the thesdk_template)
+* Currently supported models: Python, verilog, VHDL, eldo and spectre netlists.
+* Development has been carried out for Python v3.6
+
+**Release v1.3 (16.1.2020->24.1.2020)**
+
+* Main progress: Verilog and VHDL modules merged to RTL module. VHDL entities are now simulated with Verilog testbenches.
+* Support for Mentor Graphics Eldo analog simulator through eldo module. See: https://github.com/TheSystemDevelopmentKit/inverter
+* Initiated documentation with docstrings. Html documentation provided for entities with ./configure && make doc, or by running make html in entities doc directory.
+
+Configuration quickstart
+========================
 **OBS** 
 THE SCRIPTS TO BE SOURCED ARE WRITTEN FOR T-SHELL
 
@@ -24,12 +193,6 @@ compliant with your shell.::
 
 TheSyDeKick release 1.8 has been tested with Python v3.6
 
-
-For background information, see the 
-`wikipage <https://github.com/TheSystemDevelopmentKit/thesdk_template/wiki/The-System-Development-Kit>`_.
-
-Configuration quickstart
-------------------------
 
 - Go to TheSDK directory and run:: 
 
@@ -77,7 +240,7 @@ Configuration quickstart
     ./configure && make clean && make all
 
 How to use TheSyDeKick
-----------------------
+======================
 
 TheSyDeKick is a multi-tool simulation and developement environment for developing systems. 
 It targets to using a single control environment to simulate,design and measure the 
@@ -89,7 +252,7 @@ Python. Python selected based on its good support for computing and signal proce
 interfaces to measurement equipment.. 
 
 Naming and structure
-------------------------
+--------------------
 The files are organized in directories as follows::
 
               TheSDK  
