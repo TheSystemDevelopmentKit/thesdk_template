@@ -29,6 +29,8 @@ TheSyDeKick - Complete kit for Sytem-on-Chip development
 
    ads_template/sections
 
+   examples
+
    documentation_instructions
 
    indices_and_tables
