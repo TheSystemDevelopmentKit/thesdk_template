@@ -63,9 +63,9 @@ if [ -z "$TOKEN" ]; then
 fi
 
 PID="$$"
-#If not in CICD, we will meke a test clone.
+#If not in CICD, we will make a test clone.
 if [ "$CICD" != "1" ]; then
-    git clone https://github.com/TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
+    git clone git@github.com:TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
     cd ./thesdk_template_${PID}
     WORKDIR=$(pwd)
     git checkout "$BRANCH"
@@ -105,10 +105,10 @@ SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/
 UNDERDEVEL=""
 for entity in ${SUBMODULES}; do 
     echo "In $entity:"
-    cd ${WORKDIR}/${entity} && git checkout ${BRANCH} 2> /dev/null
+    cd ${WORKDIR}/${entity} 
+    CURRENT="$(git rev-parse HEAD)"
+    git checkout ${BRANCH} 2> /dev/null
     if [ "$?" == "0" ]; then
-        cd ${WORKDIR}/${entity}
-        CURRENT="$(git rev-parse HEAD)"
         git pull
         UPDATED="$(git rev-parse HEAD)"
         if [ "${UPDATED}" != "${CURRENT}" ]; then 
