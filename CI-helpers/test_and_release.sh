@@ -107,8 +107,13 @@ for entity in ${SUBMODULES}; do
     echo "In $entity:"
     cd ${WORKDIR}/${entity} && git checkout ${BRANCH} 2> /dev/null
     if [ "$?" == "0" ]; then
-        cd ${WORKDIR}/${entity} && git pull
-        UNDERDEVEL="${UNDERDEVEL} ${entity}"
+        cd ${WORKDIR}/${entity}
+        CURRENT="$(git rev-parse HEAD)"
+        git pull
+        UPDATED="$(git rev-parse HEAD)"
+        if [ "${UPDATED}" != "${CURRENT}" ]; then 
+            UNDERDEVEL="${UNDERDEVEL} ${entity}"
+        fi
     else
         echo "Branch ${BRANCH} does not exist for submodule ${entity}. No changes made."
     fi
