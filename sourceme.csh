@@ -7,7 +7,7 @@ else
 use advms_17.1
 # Set paths for Cadence programs (Spectre)
 use icadv123
-
+use ngspice
 endif
      
 #Set module thesdk to PYTHONPATH
