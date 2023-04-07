@@ -90,20 +90,29 @@ Two annual release dates are currently planned: January 16, and June 14. Current
 
 **Roadmap for the next release is roughly**
 
+* Suport for python 3.10
 * Support for Verilator
-* Improved support for vhdl/verilog mixed language simulations, i.e refactoring of rtl and spice modules.
 * Suport for CoCoTb
-* Interface class for Chisel3 RTL generator
-* Interface classes for Berkeley Analog Generator (currently works without)
 
 For details, check the "Release" projects
 
 **A bit longer term roadmap**
 
 * Server based RTL simulation enabling single-sample push-pull and multi-tool feedback simulations.
+* Interface class for Chisel3 RTL generator
+* Interface classes for Berkeley Analog Generator (currently works without)
 
 Release history
 ...............
+**Release v1.9 (7.4.2023)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Major refactoring of rtl module to separate handling of different simulators and alleviate future development for additional simulator interfaces.
+* Major refactoring of spice module to separate handling of different simulators.
+* Faster result parsing of spice netlists and subcircuit definition files.
+* Faster parsing of spice simulation results.
+* Uniformly sampled outputs from spice simulations 
+
 **Release v1.8 (3.8.2022)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
