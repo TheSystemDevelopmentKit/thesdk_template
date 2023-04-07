@@ -57,7 +57,7 @@ if [ -z "${BRANCH}" ]; then
     exit 1
 fi
 
-if [ -z "$TOKEN" ]; then
+if [ -z "$TOKEN" ] && [ ${CICD} == "1" ]; then
     echo "Token must be provided for CI/CD"
     exit 1
 fi
@@ -122,19 +122,22 @@ done
 
 cd $TEMPLATEDIR
 # Let's perform the test(s)
-cd ${TEMPLATEDIR}/Entities/inverter && ./configure &&  make sim
-SIMSTAT=$?
 cd ${TEMPLATEDIR}/doc && make html
 DOCSTAT=$?
 
-if [ "$SIMSTAT" !=  "0" ] \
-    || [ "$DOCSTAT" !=  "0" ]; then
-    STATUS="1"
-    echo "Tests failed"
-else 
-    STATUS="0"
-    echo "Tests OK, proceeding"
-fi
+for entity in inverter; do
+    cd ${TEMPLATEDIR}/Entities/${entity} && ./configure &&  make sim
+    SIMSTAT=$?
+    if [ "$SIMSTAT" !=  "0" ] \
+        || [ "$DOCSTAT" !=  "0" ]; then
+        STATUS="1"
+        echo "Tests failed"
+        exit 1
+    else 
+        STATUS="0"
+        echo "Tests OK, proceeding"
+    fi
+done
 
 if [ "$STATUS" == "0" ]; then
     cd $TEMPLATEDIR
