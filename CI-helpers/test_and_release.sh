@@ -125,17 +125,17 @@ cd $TEMPLATEDIR
 cd ${TEMPLATEDIR}/doc && make html
 DOCSTAT=$?
 
-for entity in inverter; do
+for entity in inverter inverter_tests; do
     cd ${TEMPLATEDIR}/Entities/${entity} && ./configure &&  make sim
     SIMSTAT=$?
     if [ "$SIMSTAT" !=  "0" ] \
         || [ "$DOCSTAT" !=  "0" ]; then
         STATUS="1"
-        echo "Tests failed"
+        echo "Tests failed in ${entity}"
         exit 1
     else 
         STATUS="0"
-        echo "Tests OK, proceeding"
+        echo "Tests OK in ${entity}, proceeding"
     fi
 done
 
