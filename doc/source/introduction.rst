@@ -78,9 +78,9 @@ Further reading and related information
 ---------------------------------------
 * A Roadshow slideset demostrating some use cases can be found at https://github.com/TheSystemDevelopmentKit/TheSyDeKick-roadshow/raw/master/pdffiles/TheSyDeKick-roadshow.pdf
 * A tutorial for very basic use of TheSyDeKick is provided at: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial . 
-  See the slide set forr details: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial/raw/master/pdffiles/TheSyDeKick_tutorial.pdf 
+  See the slide set for details: https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial/raw/master/pdffiles/TheSyDeKick_tutorial.pdf 
 * Site https://github.com/TheSDK-blocks is a intended to distribute TheSDK-compatible, relatively general circuit models.
-
+  and method entities.
 
 Project status and releases
 ---------------------------
@@ -104,6 +104,18 @@ For details, check the "Release" projects
 
 Release history
 ...............
+**Release v1.10 (28.6.2023)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Suport for python 3.10
+* Support for VHDL testbenches and introduction of lang-parameter to select between System Verilog or VHDL testbenches.   
+* Support for GHDL open source VHDL simulator.
+* Optional custom end condition for RTL simulation through end_condition property. 
+* Changes possibly causing backwards-compatibility issues:
+    * Simulator specific controlfile not executed for batch runs (original intented form of operation).
+    * Python parameter interactive_control_file_contents overrides the file contents
+    * All verilog_<name> attributes have been changed to rtl_<name> attributes, as attributes are now language agnostic.   
+
 **Release v1.9 (7.4.2023)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
