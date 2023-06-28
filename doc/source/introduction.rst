@@ -86,11 +86,10 @@ Project status and releases
 ---------------------------
 Release schedule
 ................
-Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.9_RC'
+Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.xx_RC'
 
 **Roadmap for the next release is roughly**
 
-* Suport for python 3.10
 * Support for Verilator
 * Suport for CoCoTb
 
@@ -98,9 +97,8 @@ For details, check the "Release" projects
 
 **A bit longer term roadmap**
 
-* Server based RTL simulation enabling single-sample push-pull and multi-tool feedback simulations.
+* Server based RTL and analog simulation enabling single-sample push-pull and multi-tool feedback simulations as in CoCoTb.
 * Interface class for Chisel3 RTL generator
-* Interface classes for Berkeley Analog Generator (currently works without)
 
 Release history
 ...............
@@ -108,12 +106,13 @@ Release history
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
 * Suport for python 3.10
-* Support for VHDL testbenches and introduction of lang-parameter to select between System Verilog or VHDL testbenches.   
+* Support for VHDL testbenches and introduction of lang attribute to select between System Verilog or VHDL testbenches.   
 * Support for GHDL open source VHDL simulator.
 * Optional custom end condition for RTL simulation through end_condition property. 
+* Attribute simulator_cotrolfile and simulator_controlfile_contents for additional noninteractive simulation control.  
 * Changes possibly causing backwards-compatibility issues:
     * Simulator specific controlfile not executed for batch runs (original intented form of operation).
-    * Python parameter interactive_control_file_contents overrides the file contents
+    * Python parameter interactive_control_file_contents overrides the file contents.
     * All verilog_<name> attributes have been changed to rtl_<name> attributes, as attributes are now language agnostic.   
 
 **Release v1.9 (7.4.2023)**
