@@ -125,7 +125,7 @@ cd $TEMPLATEDIR
 cd ${TEMPLATEDIR}/doc && make html
 DOCSTAT=$?
 
-for entity in inverter inverter_tests; do
+for entity in inverter myentity inverter_tests; do
     cd ${TEMPLATEDIR}/Entities/${entity} && ./configure &&  make sim
     SIMSTAT=$?
     if [ "$SIMSTAT" !=  "0" ] \
