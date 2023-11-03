@@ -31,5 +31,11 @@ PYI="${LSFINTERACTIVE} ${PYTHON}"
 #SPECTRELIBFILE=""
 #ELDOLIBFILE=""
 
+#Library file for verilogsimulations
+#VLOGLIBFILE=""
+
+#Library file for verilogsimulations
+#VHDLLIBFILE=""
+
 EOF
 
