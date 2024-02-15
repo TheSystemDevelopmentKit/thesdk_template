@@ -98,10 +98,20 @@ For details, check the "Release" projects
 **A bit longer term roadmap**
 
 * Server based RTL and analog simulation enabling single-sample push-pull and multi-tool feedback simulations as in CoCoTb.
-* Interface class for Chisel3 RTL generator
 
 Release history
 ...............
+**Release v1.11 (15.2.2024)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* Possibbility to define custom simulation result paths.
+* Fixes for simulation path handling.
+* Improved failure handling for parallel runs.
+* Fixes for RTL controlfile handling.
+* Improved timescale handling in verilog simulations.
+* Possiblity to define Verilog and VHDL libray files.
+* Improved postlayout simulation handling for spice.
+
 **Release v1.10 (28.6.2023)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
