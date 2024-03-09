@@ -87,6 +87,7 @@ sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
 #./pip3userinstall.sh
 
 cd ./doc
+./configure
 make html
 
 # Let's push the docs to the docs project

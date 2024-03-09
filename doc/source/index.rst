@@ -29,6 +29,8 @@ TheSyDeKick - Complete kit for Sytem-on-Chip development
 
    ads_template/sections
 
+   bootcamp/bootcamp
+
    examples
 
    documentation_instructions
