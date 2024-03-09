@@ -2,12 +2,12 @@
 
 THISDIR=$(dirname `readlink -f $0`)
 
-ISSUEDIR='../../../thesdk_helpers/bootcamp_generator/'
+ISSUEDIR='../../../thesdk_helpers/bootcamp_generator'
 # Link the issues from thesdk_helpers/bootcamp_generator/
 
 cd ${THISDIR}/source/bootcamp && rm -f Issue-*.md 
 for file in ${ISSUEDIR}/Issue-*.md; do
-    ln -sf ${ISSUEDIR}/$file ./
+    ln -sf $file ./
 done
 
 exit 0
