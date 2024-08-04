@@ -34,7 +34,8 @@ if [ ! -z "${SHELLSCRIPT_DIRS}" ]; then
 cat <<- EOF > "${DOCDIR}/source/shell_scripts.rst"
 Shell scripts
 =============
-Many shell scripts have been written to automate repetitive tasks of design and project administration. Below you find the description and
+Many shell scripts have been written to automate repetitive tasks of design 
+and project administration. Below you find the description and
 'help'-sections of the scripts in alphabetical order. The information is
 automatically generated at the build time of the documentation from the
 information provided in the scripts, so if you see something missing, please
@@ -68,6 +69,11 @@ EOF
                 if [ ! -z "$("${THISDIR}/bash2rst.sh" "${file}")" ]; then
                     echo -e "    generated/${dir}/$(basename -s .sh ${file})\n" >> "${DOCDIR}/source/shell_scripts.rst" 
                     ${THISDIR}/bash2rst.sh "${file}" > "${TARGET}/${RSTFILE}"
+                    echo -e "\n.. code-block::\n" >> "${TARGET}/${RSTFILE}"
+                    if [ ! -z "$file -h" ]; then
+                        $file -h > /dev/null && $file -h | sed 's/^/  /g' >> "${TARGET}/${RSTFILE}" \
+                            && echo "" >> "${TARGET}/${RSTFILE}"
+                    fi
                 fi
             done
         fi
