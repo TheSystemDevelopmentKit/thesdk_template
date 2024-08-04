@@ -1,7 +1,3 @@
-.. inverter documentation master file.
-   You can adapt this file completely to your liking, 
-   but it should at least contain the root `toctree` directive.
-
 Bootcamp
 ========
 
@@ -12,7 +8,7 @@ to a project fork of thesdk_template residing on a Gitlab server. These exercise
 If you are familiar with controlling gitlab with gitlab-python interface and operating i
 with gitlab tokens, generating tthe bootcamp should be quite straightforward.
 
-TO study the current contents of the bootcamp and to give an idea about useful exercises to
+To study the current contents of the bootcamp and to give an idea about useful exercises to
 get familiar with TheSydeKick, the bootcamp issues are provided below.
 
 .. toctree::

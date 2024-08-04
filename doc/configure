@@ -10,5 +10,8 @@ for file in ${ISSUEDIR}/Issue-*.md; do
     ln -sf $file ./
 done
 
+# Generate shell documentation
+${THISDIR}/shell/generate_shell_documentation.sh || exit 1
+
 exit 0
 
