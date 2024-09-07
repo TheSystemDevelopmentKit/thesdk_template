@@ -3,6 +3,7 @@ on:
     branches:
       - master
       - v1.12_RC
+      - compile-order
 
 jobs:
   doc_build_job:
