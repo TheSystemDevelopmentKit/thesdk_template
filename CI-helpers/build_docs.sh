@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/usr/bin/env bash
 #############################################################################
 # This is a documentation builder script for TheSyDeKick
 

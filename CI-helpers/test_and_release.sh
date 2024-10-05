@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/usr/bin/env bash
 #############################################################################
 # Test and relesase script for TheSyDeKick thesdk_template
 # Intended operation: When pushed to the latest release-candidate branch
