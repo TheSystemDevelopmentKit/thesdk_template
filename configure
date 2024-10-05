@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #This script will set up some configuration  variables to be used by TheSDK by creating 
 #a file TheSDK.config that can be included to all other shell scripts
 PYTHON="python3"
