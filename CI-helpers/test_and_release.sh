@@ -91,7 +91,7 @@ TEMPLATEDIR="$(pwd)"
 ./configure
 # change ssh submodule urls to git
 if [ "$CICD" == "1" ]; then
-    sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules
+    find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' { } \;
 fi
 #Init the submodules as user would
 #Currently fails on ssh cloned subsubmodules
