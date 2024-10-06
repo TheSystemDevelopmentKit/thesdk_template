@@ -91,8 +91,24 @@ Release schedule
 ................
 Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.xx_RC'
 
-**Included in next release v1.12**
+**Projected roadmap for the next release**
 
+* Support for pole-zero extraction in spice.
+* Supoprt for harmonic balance simulations in spice.
+* More support for Electromagnetic simulators.
+* Argparser in thesdk class to provide the most common command line arguments for simulation control.
+* Support for CoCoTb.
+
+**A bit longer term roadmap**
+
+* Server based RTL and analog simulation enabling single-sample push-pull and multi-tool feedback simulations as in CoCoTb.
+
+Release history
+...............
+
+**Release v1.12 (6.10.2024)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
 * RTL
     * Support for Verilator.
     * Support for mixed language designs with improved control over compile order for RTL simulator(s).
@@ -103,20 +119,6 @@ Two annual release dates are currently planned: January 16, and June 14. Current
 * Desig entities
     * Support for Verilator added to inverter and inverter_tests.
     * Make recipes to inverter_tests: 'open' to choose open source simulators only. Recipe 'proprietary' runs tests with proprietary simulator(s).
-
-**Roadmap for the next release is roughly**
-
-* Support for Verilator
-* Support for CoCoTb
-
-For details, check the "Release" projects
-
-**A bit longer term roadmap**
-
-* Server based RTL and analog simulation enabling single-sample push-pull and multi-tool feedback simulations as in CoCoTb.
-
-Release history
-...............
 
 **Release v1.11 (15.2.2024)**
 
