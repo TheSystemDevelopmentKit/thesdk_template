@@ -116,7 +116,7 @@ Release history
     * Further improved timescale handling in RTL simulations.
 * Spice
     * Fixes to power consumption extraction.
-* Desig entities
+* Design entities
     * Support for Verilator added to inverter and inverter_tests.
     * Make recipes to inverter_tests: 'open' to choose open source simulators only. Recipe 'proprietary' runs tests with proprietary simulator(s).
 
