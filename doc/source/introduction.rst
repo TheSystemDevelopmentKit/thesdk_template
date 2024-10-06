@@ -91,6 +91,19 @@ Release schedule
 ................
 Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.xx_RC'
 
+**Included in next release v1.12**
+
+* RTL
+    * Support for Verilator.
+    * Support for mixed language designs with improved control over compile order for RTL simulator(s).
+    * Compilation and simulation optimization control for (some) RTL simulators to trade off waveform resolution to simulation speed.
+    * Further improved timescale handling in RTL simulations.
+* Spice
+    * Fixes to power consumption extraction.
+* Desig entities
+    * Support for Verilator added to inverter and inverter_tests.
+    * Make recipes to inverter_tests: 'open' to choose open source simulators only. Recipe 'proprietary' runs tests with proprietary simulator(s).
+
 **Roadmap for the next release is roughly**
 
 * Support for Verilator
@@ -104,6 +117,7 @@ For details, check the "Release" projects
 
 Release history
 ...............
+
 **Release v1.11 (15.2.2024)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
