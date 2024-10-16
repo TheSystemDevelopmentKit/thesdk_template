@@ -3,7 +3,7 @@
 #Written by by Marko Kosunen, marko.kosunen@aalto.fi, 2017
 DIR=$( cd `dirname $0` && pwd )
 SUBMODULES="\
-    ./Entities/ads \
+    ./Entities/momem \
     ./Entities/rtl \
     ./Entities/spice \
     ./Entities/thesdk \
@@ -12,7 +12,6 @@ SUBMODULES="\
     ./Entities/inverter_tests \
     ./Entities/myentity \
     ./Entities/register_template \
-    ./Entities/ads_template \
     ./thesdk_helpers \
     ./doc/TheSyDeKick-roadshow \
     ./doc/TheSyDeKick_tutorial \
