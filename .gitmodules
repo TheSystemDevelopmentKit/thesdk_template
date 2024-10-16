@@ -28,12 +28,9 @@
 [submodule "Entities/inverter_tests"]
 	path = Entities/inverter_tests
 	url = git@github.com:TheSystemDevelopmentKit/inverter_tests.git
-[submodule "Entities/ads"]
-	path = Entities/ads
-	url = git@github.com:TheSystemDevelopmentKit/ads.git
-[submodule "Entities/ads_template"]
-	path = Entities/ads_template
-	url = git@github.com:TheSystemDevelopmentKit/ads_template.git
 [submodule "doc/TheSyDeKick_tutorial"]
 	path = doc/TheSyDeKick_tutorial
 	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick_tutorial.git
+[submodule "Entities/momem"]
+	path = Entities/momem
+	url = git@github.com:TheSystemDevelopmentKit/momem.git
