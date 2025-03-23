@@ -1,1 +1,0 @@
-../../../Entities/ads/doc/source/sections.rst

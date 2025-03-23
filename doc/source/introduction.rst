@@ -106,6 +106,19 @@ Two annual release dates are currently planned: January 16, and June 14. Current
 Release history
 ...............
 
+**Release v1.13 (moved to 30.3.2025)**
+
+* Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+* RTL
+    * 
+* Spice
+    * 
+* Design entities
+    * 
+    * 
+* Ads
+    * Ads entity was renamed to 'momem' to better reflect the nature of the interface: ADS momentum electromagnetic simulator.
+
 **Release v1.12 (6.10.2024)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
