@@ -102,6 +102,10 @@ if [ "$CICD" == "1" ]; then
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
 fi
 git submodule update --init --recursive
+if [ "$CICD" == "1" ]; then
+    find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
+fi
+git submodule update --init --recursive
 
 
 # Test the dependency installation
