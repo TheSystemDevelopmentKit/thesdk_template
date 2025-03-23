@@ -91,12 +91,14 @@ TEMPLATEDIR="$(pwd)"
 ./configure
 # change ssh submodule urls to git
 if [ "$CICD" == "1" ]; then
-    find ./ -name .gitmodules -exec sed -n 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#p' {} \;
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
 fi
 #Init the submodules as user would
 #Currently fails on ssh cloned subsubmodules
-${WORKDIR}/init_submodules.sh
+#Must initialize other means
+#${WORKDIR}/init_submodules.sh
+git submodule update --init --recursive
+
 
 # Test the dependency installation
 # These are already in the buildimage
