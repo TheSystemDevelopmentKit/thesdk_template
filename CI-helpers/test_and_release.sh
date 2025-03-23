@@ -97,6 +97,10 @@ fi
 #Currently fails on ssh cloned subsubmodules
 #Must initialize other means
 #${WORKDIR}/init_submodules.sh
+git submodule update --init 
+if [ "$CICD" == "1" ]; then
+    find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
+fi
 git submodule update --init --recursive
 
 
