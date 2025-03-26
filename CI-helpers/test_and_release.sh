@@ -96,16 +96,14 @@ fi
 #Init the submodules as user would
 #Currently fails on ssh cloned subsubmodules
 #Must initialize other means
-#${WORKDIR}/init_submodules.sh
-git submodule update --init 
 if [ "$CICD" == "1" ]; then
+    git submodule update --init 
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
-fi
-git submodule update --init --recursive
-if [ "$CICD" == "1" ]; then
+    git submodule update --init --recursive
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
+else
+    ${WORKDIR}/init_submodules.sh
 fi
-git submodule update --init --recursive
 
 
 # Test the dependency installation
