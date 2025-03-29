@@ -103,7 +103,7 @@ Annual release date currently planned: June 14. Current release candidate branch
 Release history
 ...............
 
-**Release v1.13 (moved to 30.3.2025)**
+**Release v1.13 (29.3.2025)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
   Decision to drop the January release date for future developments, as the environment is quite stable already.
