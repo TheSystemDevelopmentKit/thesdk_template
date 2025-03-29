@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-      - v1.13_RC
+      - v1.14_RC
 
 jobs:
   doc_build_job:

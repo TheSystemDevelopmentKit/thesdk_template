@@ -116,6 +116,7 @@ Release history
     * Pole-Zero analysis for spectre.
 * Ads
     * Ads entity was renamed to 'momem' to better reflect the nature of the interface: ADS momentum electromagnetic simulator.
+    * Suppoer added for EMX simulator. 
     * Electromagnetic simulation features and documentation improved.
 
 **Release v1.12 (6.10.2024)**
