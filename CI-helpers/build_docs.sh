@@ -74,8 +74,6 @@ fi
 #export PYTHONPATH
 #
 #cd ./thesdk_template
-#git checkout v1.8_RC
-#git pull
 
 git config --global --add safe.directory /__w/thesdk_template/thesdk_template
 # Normal workflow
@@ -83,8 +81,6 @@ git config --global --add safe.directory /__w/thesdk_template/thesdk_template
 sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' .gitmodules \
     && git submodule sync \
     && git submodule update --init
-
-#./pip3userinstall.sh
 
 cd ./doc
 ./configure
@@ -107,7 +103,7 @@ git commit -m"Update docs"
 git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/docs.git"
 
 echo "Pushing to https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/docs.git"
-git push 
+git push  ||  $(echo 'Push failed' && exit 1)
 
 exit 0
 

@@ -174,7 +174,8 @@ EOF
         git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
     fi
     git commit -m"$COMMITMESSAGE"
-    git push 
+    git push
+    STATUS=$?
 fi
 cd ${WORKDIR} && rm -rf ./thesdk_template_${PID} 
 exit $STATUS
