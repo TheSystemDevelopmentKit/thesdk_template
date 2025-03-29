@@ -89,13 +89,10 @@ Project status and releases
 ---------------------------
 Release schedule
 ................
-Two annual release dates are currently planned: January 16, and June 14. Current release candidate branches for next release are named 'v1.xx_RC'
+Annual release date currently planned: June 14. Current release candidate branches for next release are named 'v1.xx_RC'
 
 **Projected roadmap for the next release**
 
-* Support for pole-zero extraction in spice.
-* Supoprt for harmonic balance simulations in spice.
-* More support for Electromagnetic simulators.
 * Argparser in thesdk class to provide the most common command line arguments for simulation control.
 * Support for CoCoTb.
 
@@ -109,15 +106,17 @@ Release history
 **Release v1.13 (moved to 30.3.2025)**
 
 * Main progress: ( See: https://github.com/TheSystemDevelopmentKit/thesdk_template)
+  Decision to drop the January release date for future developments, as the environment is quite stable already.
+
 * RTL
-    * 
+    * More freedom to control design names and simulator call directory location.  
 * Spice
-    * 
-* Design entities
-    * 
-    * 
+    * Steady state, S-parameter, noise analysis, and periodic AC simulations for spectre.
+    * Stability analysis for spectre.
+    * Pole-Zero analysis for spectre.
 * Ads
     * Ads entity was renamed to 'momem' to better reflect the nature of the interface: ADS momentum electromagnetic simulator.
+    * Electromagnetic simulation features and documentation improved.
 
 **Release v1.12 (6.10.2024)**
 
