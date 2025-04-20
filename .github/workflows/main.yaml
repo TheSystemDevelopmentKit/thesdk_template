@@ -37,6 +37,8 @@ jobs:
     # Package settings-> Manage action access of the project hosting the
     # package
     container: 'ghcr.io/thesystemdevelopmentkit/thesdktestimage:latest'
+    name: Notify Zulip
+    steps:
       - name: Variable definition
         run: |
           MESSAGE_TEXT="Update on $GITHUB_REPOSITORY \n
