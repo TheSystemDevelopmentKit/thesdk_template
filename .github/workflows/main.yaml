@@ -32,6 +32,10 @@ jobs:
         run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -t ${{ secrets.THESYDEKICK_TOKEN }}
   notification_job:
     runs-on: ubuntu-latest
+    # This project MUST be given permission to use the image blow. at
+    # Package settings-> Manage action access of the project hosting the
+    # package
+    container: 'ghcr.io/thesystemdevelopmentkit/thesdktestimage:latest'
       - name: Variable definition
         run: |
           MESSAGE_TEXT="Update on $GITHUB_REPOSITORY \n
