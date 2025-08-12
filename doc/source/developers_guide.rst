@@ -31,16 +31,18 @@ Project access levels:
 * Only 'Maintainers' should be able to push to protected branches.
 * 'Developers' should be able to merge to protected branches.
 
-Process for gaining access to Chip 'n' Dale group
+Process for gaining access to TheSyDeKick group
 -------------------------------------------------
 
 Among the contributors, we saw a need to agree on policy how the access rights
 and access levels are granted to people willing to participate the development.
 The reason being that with the great power comes a great responsibility, and
 the principle (as in system managing in general) is that privileges are
-minimized by default to the minimum level necessary. The privileges of the
-access levels are reported `https://docs.gitlab.com/ee/user/permissions.html
-<https://docs.gitlab.com/ee/user/permissions.html>`_
+minimized by default to the minimum level necessary. 
+
+.. The privileges of the
+  access levels are reported `https://docs.gitlab.com/ee/user/permissions.html
+  <https://docs.gitlab.com/ee/user/permissions.html>`_
 
 1. 'Owner' rights are granted only if they are absolutely needed. They are
    primarily granted to persons who a) represents a trusted organization. b)
