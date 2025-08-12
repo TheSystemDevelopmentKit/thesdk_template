@@ -36,7 +36,7 @@ author = ''
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '1.12_RC'
+release = '1.14_RC'
 
 autoclass_content='both'
 
@@ -50,14 +50,28 @@ autoclass_content='both'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinxcontrib.bibtex',
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'myst_parser'
+    'myst_parser',
+    'sphinx.ext.mathjax'
 ]
+
+bibtex_bibfiles = ['refs.bib']
+
+math_number_all = True
+numfig = True
+numfig_format = {
+#     'figure': 'Fig. {number}',
+#     'table':  'Table {number} {name}',
+#     'code-block': 'Listing {number}',
+#     'section':    'Section {number}',
+#     'math': 'Equation %s',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
