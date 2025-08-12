@@ -38,7 +38,7 @@ Among the contributors, we saw a need to agree on policy how the access rights
 and access levels are granted to people willing to participate the development.
 The reason being that with the great power comes a great responsibility, and
 the principle (as in system managing in general) is that privileges are
-minimized by default to the minimum level necessary. 
+minimized by default to the minimum level necessary.
 
 .. The privileges of the
   access levels are reported `https://docs.gitlab.com/ee/user/permissions.html
@@ -72,7 +72,7 @@ involved' contributor.
 1. At No access: File pull/merge requests from a fork and ask for a review.
    . After 5 merged requests you may be granted 'reporter' rights per request
    to at least two maintainers.
-        
+
 2. At Reporter rights: File pull/merge requests and demonstrate activity and skill.
    After 5 merged requests 'developer' rights may be granted per request from
    at least three 'maintainers'.
