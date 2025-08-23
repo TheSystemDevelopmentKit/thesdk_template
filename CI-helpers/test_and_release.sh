@@ -129,6 +129,12 @@ for entity in ${SUBMODULES}; do
     cd ${WORKDIR}
 done
 
+if [ -z "${UNDERDEVEL}" ]; then
+    echo "Nothing to update, nothing to test."
+    exit 0
+fi
+
+# If we update, then we also test
 cd $TEMPLATEDIR
 # Let's perform the test(s)
 cd ${TEMPLATEDIR}/doc && make html
