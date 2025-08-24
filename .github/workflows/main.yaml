@@ -29,7 +29,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Test and release action
+        id: tests
         run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -w ${GITHUB_WORKSPACE} -t ${{ secrets.THESYDEKICK_TOKEN }}
+      - name: Variable definition
+        if: ${GITHUB_ACTOR} != "ecdbot"
+        if: steps.tests.outcome =='success'
+        run: |
+          MESSAGE_TEXT="Update on $GITHUB_REPOSITORY \n
+          Branch: ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}} \n
+          Commit message: \n
+          ${{ github.event.head_commit.message }} "
+          echo "MESSAGE<<EOF" >> $GITHUB_ENV
+          # here we can place the command that will generate multi-line text
+          echo $MESSAGE_TEXT >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - name: Notification
+        if: ${GITHUB_ACTOR} != "ecdbot"
+        if: steps.tests.outcome =='success'
+        run: >
+          curl -X POST --data-urlencode type=stream
+          --data-urlencode "content=${{ env.MESSAGE }}"
+          --data-urlencode 'to="Update notifications"'
+          --data-urlencode "topic=${{ github.event.repository.name }}"
+          ${{ secrets.ZULIPWEBHOOK }} || exit 1
 
 #  notification_job:
 #    runs-on: ubuntu-latest
