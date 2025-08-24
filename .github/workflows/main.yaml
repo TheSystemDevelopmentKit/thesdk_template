@@ -43,7 +43,6 @@ jobs:
           echo $MESSAGE_TEXT >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Notification
-        if: steps.tests.outcome =='success'
         if: ${{ steps.tests.outcome =='success' && github.actor != 'ecdbot' }}
         run: >
           curl -X POST --data-urlencode type=stream
