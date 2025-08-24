@@ -32,7 +32,7 @@ jobs:
         id: tests
         run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -w ${GITHUB_WORKSPACE} -t ${{ secrets.THESYDEKICK_TOKEN }}
       - name: Variable definition
-        if: ${{ steps.tests.outcome =='success' && "${GITHUB_ACTOR}" != "ecdbot" }}
+        if: ${{ steps.tests.outcome =='success' && ${GITHUB_ACTOR} != 'ecdbot' }}
         run: |
           MESSAGE_TEXT="Update on $GITHUB_REPOSITORY \n
           Branch: ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}} \n
