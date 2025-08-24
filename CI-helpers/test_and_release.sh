@@ -71,8 +71,12 @@ if [ "$CICD" != "1" ]; then
     git checkout "$BRANCH"
     git pull
 else
-    git config --global --add safe.directory /__w/thesdk_template/thesdk_template
+    git config --global user.name "ecdbot"
+    git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
+    git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
+    git config --global --add safe.directory ${GITHUB_WORKSPACE}
     WORKDIR=$(pwd)
+    echo "Github actor is ${GITHUB_ACTOR}"
 fi
 # Assumption is that we are working in the latest commit of thesdk_template.
 #ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
@@ -174,11 +178,6 @@ done)
 EOF
 )"
     echo "$COMMITMESSAGE"
-    if [ ${CICD} == "1" ]; then 
-        git config --global user.name "ecdbot"
-        git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
-        git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
-    fi
     git commit -m"$COMMITMESSAGE"
     git push
     STATUS=$?
