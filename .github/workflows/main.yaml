@@ -32,8 +32,10 @@ jobs:
         id: tests
         run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -w ${GITHUB_WORKSPACE} -t ${{ secrets.THESYDEKICK_TOKEN }}
       - name: Variable definition
-        if: ${GITHUB_ACTOR} != "ecdbot"
-        if: steps.tests.outcome =='success'
+      - rules:
+          if: >
+            ${GITHUB_ACTOR} != "ecdbot" &&
+            steps.tests.outcome =='success'
         run: |
           MESSAGE_TEXT="Update on $GITHUB_REPOSITORY \n
           Branch: ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}} \n
@@ -44,8 +46,10 @@ jobs:
           echo $MESSAGE_TEXT >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Notification
-        if: ${GITHUB_ACTOR} != "ecdbot"
-        if: steps.tests.outcome =='success'
+      - rules:
+          if: >
+            ${GITHUB_ACTOR} != "ecdbot" &&
+            steps.tests.outcome =='success'
         run: >
           curl -X POST --data-urlencode type=stream
           --data-urlencode "content=${{ env.MESSAGE }}"
