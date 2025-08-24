@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Test and release action
-        run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -t ${{ secrets.THESYDEKICK_TOKEN }}
+        run: ./CI-helpers/test_and_release.sh -c -b ${GITHUB_REF##*/} -w ${GITHUB_WORKSPACE} -t ${{ secrets.THESYDEKICK_TOKEN }}
 
 #  notification_job:
 #    runs-on: ubuntu-latest
