@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'CI tulee, oletko valmis?''
+                echo 'CI tulee, oletko valmis?'
             }
         }
 
