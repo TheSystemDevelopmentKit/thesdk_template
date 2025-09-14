@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'CI tulee, oletko valmis?'
+                echo 'With polling!'
             }
         }
 
