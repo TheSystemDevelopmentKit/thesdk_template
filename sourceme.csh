@@ -10,7 +10,7 @@ use icadv123
 use ngspice
 use icarus
 endif
-     
+
 #Set module thesdk to PYTHONPATH
 set called=($_)
 set scriptfp=`readlink -f $called[2]`
@@ -22,11 +22,16 @@ else
     setenv PYTHONPATH $scriptdir/Entities/thesdk:${PYTHONPATH}
 endif
 
-if ( -d ${HOME}/.local/bin && "${PATH}" !~ *"${HOME}/.local/bin"* ) then
-    echo "Adding \${HOME}/.local/bin to path for user specific python installations"
-    setenv PATH ${HOME}/.local/bin:${PATH}
+if ( -d $scriptdir/.venv ) then
+    echo "Found the default virtual environment at .venv. Sourcing the activation script ./.venv/bin/activate.csh."
+    source  $scriptdir/.venv/bin/activate.csh && echo "Virtual environmetn activated. Deactivate with 'deactivate'".
 else
-    echo "${HOME}/.local/bin already in path"
+    if ( -d ${HOME}/.local/bin && "${PATH}" !~ *"${HOME}/.local/bin"* ) then
+        echo "Adding \${HOME}/.local/bin to path for user specific python installations"
+        setenv PATH ${HOME}/.local/bin:${PATH}
+    else
+        echo "${HOME}/.local/bin already in path"
+    endif
 endif
 
 unset called
