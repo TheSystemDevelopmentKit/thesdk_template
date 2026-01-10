@@ -17,9 +17,15 @@ set scriptfp=`readlink -f $called[2]`
 set scriptdir=`dirname $scriptfp`
 
 if ( ! $?PYTHONPATH ) then
-    setenv PYTHONPATH $scriptdir/Entities/thesdk
+    setenv PYTHONPATH $scriptdir/Entities
+    foreach package ( `cat .gitmodules | sed -n '/^\[submodule\s*"Entities/p' | sed 's/\(\[submodule\s*"\)\(Entities.*\)\(\s*"\]\)/\2/g'` )
+        setenv PYTHONPATH ${scriptdir}/${package}:${PYTHONPATH}
+    end
 else
-    setenv PYTHONPATH $scriptdir/Entities/thesdk:${PYTHONPATH}
+    setenv PYTHONPATH $scriptdir/Entities:${PYTHONPATH}
+    foreach package ( `cat .gitmodules | sed -n '/^\[submodule\s*"Entities/p' | sed 's/\(\[submodule\s*"\)\(Entities.*\)\(\s*"\]\)/\2/g'` )
+        setenv PYTHONPATH ${scriptdir}/${package}:${PYTHONPATH}
+    end
 endif
 
 if ( -d $scriptdir/.venv ) then
