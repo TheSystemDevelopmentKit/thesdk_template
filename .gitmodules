@@ -1,36 +1,36 @@
 [submodule "Entities/thesdk"]
 	path = Entities/thesdk
-    url = git@github.com:TheSystemDevelopmentKit/thesdk.git
+    url = https://github.com/TheSystemDevelopmentKit/thesdk.git
 [submodule "thesdk_helpers"]
 	path = thesdk_helpers
-	url = git@github.com:TheSystemDevelopmentKit/thesdk_helpers.git
+	url = https://github.com/TheSystemDevelopmentKit/thesdk_helpers.git
 [submodule "Entities/inverter"]
 	path = Entities/inverter
-	url = git@github.com:TheSystemDevelopmentKit/inverter.git
+	url = https://github.com/TheSystemDevelopmentKit/inverter.git
 [submodule "Entities/rtl"]
 	path = Entities/rtl
-	url = git@github.com:TheSystemDevelopmentKit/rtl.git
+	url = https://github.com/TheSystemDevelopmentKit/rtl.git
 [submodule "Entities/myentity"]
 	path = Entities/myentity
-	url = git@github.com:TheSystemDevelopmentKit/tutorial_entity.git
+	url = https://github.com/TheSystemDevelopmentKit/tutorial_entity.git
 [submodule "Entities/spice"]
 	path = Entities/spice
-	url = git@github.com:TheSystemDevelopmentKit/spice.git
+	url = https://github.com/TheSystemDevelopmentKit/spice.git
 [submodule "Entities/register_template"]
 	path = Entities/register_template
-	url = git@github.com:TheSDK-blocks/register_template.git
+	url = https://github.com/TheSDK-blocks/register_template.git
 [submodule "doc/TheSyDeKick-roadshow"]
 	path = doc/TheSyDeKick-roadshow
-	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick-roadshow.git
+	url = https://github.com/TheSystemDevelopmentKit/TheSyDeKick-roadshow.git
 [submodule "Entities/inverter_testbench"]
 	path = Entities/inverter_testbench
-	url = git@github.com:TheSystemDevelopmentKit/inverter_testbench.git
+	url = https://github.com/TheSystemDevelopmentKit/inverter_testbench.git
 [submodule "Entities/inverter_tests"]
 	path = Entities/inverter_tests
-	url = git@github.com:TheSystemDevelopmentKit/inverter_tests.git
+	url = https://github.com/TheSystemDevelopmentKit/inverter_tests.git
 [submodule "doc/TheSyDeKick_tutorial"]
 	path = doc/TheSyDeKick_tutorial
-	url = git@github.com:TheSystemDevelopmentKit/TheSyDeKick_tutorial.git
+	url = https://github.com/TheSystemDevelopmentKit/TheSyDeKick_tutorial.git
 [submodule "Entities/momem"]
 	path = Entities/momem
-	url = git@github.com:TheSystemDevelopmentKit/momem.git
+	url = https://github.com/TheSystemDevelopmentKit/momem.git
