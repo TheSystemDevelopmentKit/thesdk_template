@@ -12,4 +12,5 @@ doc/docstrings/build/*
 doc/source/bootcamp/Issue*.md
 doc/source/generated/*
 doc/source/shell_scripts.rst
+.venv
 

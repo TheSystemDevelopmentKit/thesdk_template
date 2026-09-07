@@ -2,17 +2,17 @@
 #############################################################################
 # Test and relesase script for TheSyDeKick thesdk_template
 # Intended operation: When pushed to the latest release-candidate branch
-# The all major Entity submodules are updated to the HEAD of thesdk_template and the operation 
+# The all major Entity submodules are updated to the HEAD of thesdk_template and the operation
 # is tested by running the inverter selftest (probably other tests in the future)
 # If the tests are passed, the resulting updated thesdk_template module is pushed to
 # the latest development branch.
-# 
+#
 # Written by Marko Kosunen, marko.kosunen@aalto.fi, 18.9.2022
 #############################################################################
 
 help_f()
 {
-cat << EOF    
+cat << EOF
 test_and_release Release 1.0 (18.09.2022)
 For testing and releasing TheSyDeKick releases
 Written by Marko Pikkis Kosunen
@@ -23,14 +23,14 @@ DESCRIPTION
    Defines and runs tests for the submodules of thesdk_template
 
 OPTIONS
-  -b 
+  -b
      Branch of thesdk_template to operate on
      Commit and push to that branch after testing.
 
-  -c Run in CI/CD with this option 
+  -c Run in CI/CD with this option
 
   -t
-     STRING : Access token 
+     STRING : Access token
   -h
       Show this help.
 EOF
@@ -41,12 +41,13 @@ EOF
 CICD="0"
 TOKEN=""
 BRANCH=""
-while getopts b:ct:h opt
+while getopts b:ct:w:h opt
 do
   case "$opt" in
     b) BRANCH="$OPTARG";;
     c) CICD="1";;
     t) TOKEN="$OPTARG";;
+    w) WORKSPACE="$OPTARG";;
     h) help_f; exit 0;;
     \?) help_f;;
   esac
@@ -64,15 +65,19 @@ fi
 
 PID="$$"
 #If not in CICD, we will make a test clone.
-if [ "$CICD" != "1" ]; then
+if [ "$CICD" == "1" ]; then
+    git config --global --add safe.directory ${WORKSPACE}
+    git config --global user.name "ecdbot"
+    git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
+    git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
+    WORKDIR=$(pwd)
+    echo "Github actor is ${GITHUB_ACTOR}"
+else
     git clone git@github.com:TheSystemDevelopmentKit/thesdk_template.git ./thesdk_template_${PID}
     cd ./thesdk_template_${PID}
     WORKDIR=$(pwd)
     git checkout "$BRANCH"
     git pull
-else
-    git config --global --add safe.directory /__w/thesdk_template/thesdk_template
-    WORKDIR=$(pwd)
 fi
 # Assumption is that we are working in the latest commit of thesdk_template.
 #ENTITY="$(git remote get-url origin | sed -n 's#\(.*/\)\(.*\)\(.git\)#\2#p')"
@@ -97,7 +102,7 @@ fi
 #Currently fails on ssh cloned subsubmodules
 #Must initialize other means
 if [ "$CICD" == "1" ]; then
-    git submodule update --init 
+    git submodule update --init
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
     git submodule update --init --recursive
     find ./ -name .gitmodules -exec sed -i 's#\(url = \)\(git@\)\(.*\)\(:\)\(.*$\)#\1https://\3/\5#g' {} \;
@@ -112,15 +117,15 @@ fi
 
 SUBMODULES="$(sed -n '/\[submodule/p' .gitmodules | sed -n 's/.* \"\(.*\)\"]/\1/p' | xargs)"
 UNDERDEVEL=""
-for entity in ${SUBMODULES}; do 
+for entity in ${SUBMODULES}; do
     echo "In $entity:"
-    cd ${WORKDIR}/${entity} 
+    cd ${WORKDIR}/${entity}
     CURRENT="$(git rev-parse HEAD)"
     git checkout ${BRANCH} 2> /dev/null
     if [ "$?" == "0" ]; then
         git pull
         UPDATED="$(git rev-parse HEAD)"
-        if [ "${UPDATED}" != "${CURRENT}" ]; then 
+        if [ "${UPDATED}" != "${CURRENT}" ]; then
             UNDERDEVEL="${UNDERDEVEL} ${entity}"
         fi
     else
@@ -129,10 +134,17 @@ for entity in ${SUBMODULES}; do
     cd ${WORKDIR}
 done
 
+if [ -z "${UNDERDEVEL}" ]; then
+    echo "Nothing to update, nothing to test."
+    exit 0
+fi
+
+# If we update, then we also test
 cd $TEMPLATEDIR
 # Let's perform the test(s)
-cd ${TEMPLATEDIR}/doc && make html
-DOCSTAT=$?
+# Docbuild handled elsewhere
+#cd ${TEMPLATEDIR}/doc && make html
+#DOCSTAT=$?
 DOCSTAT="0"
 
 for entity in inverter myentity inverter_tests; do
@@ -143,7 +155,7 @@ for entity in inverter myentity inverter_tests; do
         STATUS="1"
         echo "Tests failed in ${entity}"
         exit 1
-    else 
+    else
         STATUS="0"
         echo "Tests OK in ${entity}, proceeding"
     fi
@@ -151,7 +163,7 @@ done
 
 if [ "$STATUS" == "0" ]; then
     cd $TEMPLATEDIR
-    for entity in ${UNDERDEVEL}; do 
+    for entity in ${UNDERDEVEL}; do
         echo "Staging $entity"
         git add ${entity}
     done
@@ -168,15 +180,10 @@ done)
 EOF
 )"
     echo "$COMMITMESSAGE"
-    if [ ${CICD} == "1" ]; then 
-        git config --global user.name "ecdbot"
-        git config --global user.email "${GITHUB_ACTOR}@noreply.github.com"
-        git remote set-url origin "https://x-access-token:${TOKEN}@github.com/TheSystemDevelopmentKit/thesdk_template.git"
-    fi
     git commit -m"$COMMITMESSAGE"
     git push
     STATUS=$?
 fi
-cd ${WORKDIR} && rm -rf ./thesdk_template_${PID} 
+cd ${WORKDIR} && rm -rf ./thesdk_template_${PID}
 exit $STATUS
 
