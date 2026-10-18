@@ -38,5 +38,7 @@ TheSyDeKick - Complete kit for Sytem-on-Chip development
 
    documentation_instructions
 
+   developers_guide
+
    indices_and_tables
 

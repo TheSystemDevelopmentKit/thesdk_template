@@ -9,7 +9,8 @@ is primarily targeted for design and testing of integrated microelectronic desig
 The operation principle of TheSDK is depicted below.
 
 .. image:: Pics/bitmaps/TheSDK_block_diagram.png
-  :alt: TheSDK block diagram
+   :width: 1024px
+   :alt: TheSDK block diagram
 
 This is the master documentation of TheSyDeKick. These pages
 provide an introduction and browsable documentation for the core Entities:
@@ -45,7 +46,8 @@ As TheSyDeKick targets hardware modeling, every instance can be thought as a
 piece of equipment or hardware, as depicted below 
 
 .. image:: Pics/bitmaps/TheSDK_operation_principle.png
-  :alt: TheSDK operation principle
+   :width: 1024px
+   :alt: TheSDK operation principle
 
 The entity object can contain almost anything, but it should follow two principles.
 
@@ -116,7 +118,7 @@ Release history
     * Pole-Zero analysis for spectre.
 * Ads
     * Ads entity was renamed to 'momem' to better reflect the nature of the interface: ADS momentum electromagnetic simulator.
-    * Suppoer added for EMX simulator. 
+    * Support added for EMX simulator. 
     * Electromagnetic simulation features and documentation improved.
 
 **Release v1.12 (6.10.2024)**
